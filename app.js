@@ -63,12 +63,37 @@ app.directive('slideshow', ['$compile', function($compile) {
                   //processEscapes: true
                 },
               },
+    broadcast: {
+      secret: '$2a$05$hhgakVn1DWBfgfSwMihABeYToIBEiQGJ.ONa.HWEiNGNI6mxFCy8S',
+      // Configure RTCMultiConnection
+      connection: {
+        socketURL: 'https://revealjs-broadcast.herokuapp.com/',
+        session: {
+        audio: true,
+        video: true,
+        oneway: true
+        },
+      },
+    }, 
+    keyboard: {
+        83: function() {
+            var password = prompt("Please enter broadcast password", "");
+            RevealBroadcast.start( { id: 'aashjkxcvyiuqwbljdv', password: password } );
+        },  // create broadcast when 's' is pressed
+        65: function() {
+            RevealBroadcast.connect( { id: 'aashjkxcvyiuqwbljdv' } );
+        },  // connect to broadcast when 'a' is pressed
+    },
               dependencies: [
 		        { src: './reveal.js/plugin/math/math.js', async: true },
                 { src: './reveal.js/plugin/markdown/marked.js' },
                 { src: './reveal.js/plugin/markdown/markdown.js' },
-                { src: './reveal.js/plugin/highlight/highlight.js' },
-              //    { src: '/static/js/reveal.js/plugin/notes/notes.js', async: true },
+                { src: './reveal.js-plugins/broadcast/RTCMultiConnection.min.js'},
+                { src: './reveal.js-plugins/broadcast/socket.io.js'},
+                { src: './reveal.js-plugins/broadcast/bCrypt.js'},
+                { src: './reveal.js-plugins/broadcast/broadcast.js'},
+                //{ src: './reveal.js/plugin/highlight/highlight.js' },
+                //{ src: '/static/js/reveal.js/plugin/notes/notes.js', async: true },
               ],
               hash: true,
               loop: false,
