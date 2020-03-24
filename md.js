@@ -3,3 +3,5 @@ var app = angular.module('md', [
     'ng-showdown',
     'slides.services.sockets',
 ]);
+app.controller("MyController", ["$scope", "$location", "$http", function($scope, $location, $http) {
+}]);
