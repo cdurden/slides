@@ -4,7 +4,7 @@ var app = angular.module('md', [
     'slides.services.sockets',
 ]);
 app.config([ '$showdownProvider' , function ($showdownProvider) {
-    $showdownProvider.setOption('table', true);
+    $showdownProvider.setOption('tables', true);
 }]);
 app.config([ '$locationProvider' , function ($locationProvider) {
     $locationProvider.html5Mode({
