@@ -4,5 +4,6 @@ var app = angular.module('md', [
     'slides.services.sockets',
 ]);
 app.controller("MyController", ["$scope", "$location", "$http", function($scope, $location, $http) {
+    $scope.vm = {};
     $scope.vm.mymarkdown = "# Heading";
 }]);
