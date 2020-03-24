@@ -1,5 +1,6 @@
 [
     ["BacteriaScenario"],
+    ["BacterialGrowthDiagram"],
     ["LinearGrowthQuestionSpecial"],
     ["LinearGrowthQuestionGeneral"],
     ["LinearGrowthRestatement"],
