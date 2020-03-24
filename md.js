@@ -3,6 +3,12 @@ var app = angular.module('md', [
     'ng-showdown',
     'slides.services.sockets',
 ]);
+app.config([ '$locationProvider' , function ($locationProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+}]);
 app.controller("MyController", ["$scope", "$location", "$http", function($scope, $location, $http) {
   $scope.markdown = "";
   md = $location.search().md;
