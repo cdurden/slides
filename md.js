@@ -3,6 +3,9 @@ var app = angular.module('md', [
     'ng-showdown',
     'slides.services.sockets',
 ]);
+app.config([ '$showdownProvider' , function ($showdownProvider) {
+    $showdownProvider.setOption('table': true);
+}]);
 app.config([ '$locationProvider' , function ($locationProvider) {
     $locationProvider.html5Mode({
         enabled: true,
