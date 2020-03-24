@@ -1,11 +1,7 @@
 [
     ["BacteriaScenario"],
+    ["GrowthPatternsLearningGoals"],
     ["BacterialGrowthDiagram"],
     ["FindingLamp"],
-    ["PurseQuestions"],
-    ["LinearGrowthQuestionSpecial"],
-    ["LinearGrowthQuestionGeneral"],
-    ["LinearGrowthRestatement"],
-    ["ExponentialGrowthStatement"],
-    ["ExponentialGrowthQuestion"]
+    ["PurseQuestions"]
 ]
