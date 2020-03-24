@@ -56,7 +56,7 @@ app.directive('slideshow', ['$compile', function($compile) {
                 mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
                 config: 'TeX-AMS_HTML-full', // See http://docs.mathjax.org/en/latest/config-files.html
                 // pass other options into `MathJax.Hub.Config()`
-                TeX: { Macros: { RR: "{\\bf R}" } }
+                TeX: { Macros: { RR: "{\\bf R}" } },
     tex2jax: {
       inlineMath: [ ["\\(","\\)"] ],
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
