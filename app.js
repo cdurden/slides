@@ -57,11 +57,11 @@ app.directive('slideshow', ['$compile', function($compile) {
                 config: 'TeX-AMS_HTML-full', // See http://docs.mathjax.org/en/latest/config-files.html
                 // pass other options into `MathJax.Hub.Config()`
                 TeX: { Macros: { RR: "{\\bf R}" } },
-    tex2jax: {
-      inlineMath: [ ["\\(","\\)"] ],
-      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true
-    },
+                tex2jax: {
+                  inlineMath: [ ["\\(","\\)"] ],
+                  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                  processEscapes: true
+                },
               },
               dependencies: [
 		        { src: './reveal.js/plugin/math/math.js', async: true },
