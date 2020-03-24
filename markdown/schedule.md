@@ -1,5 +1,5 @@
 # Schedule
-
+Table with schedule:
 
 | Date         | Learning Objectives        | Assignments |
 |==============|============================|=============|
