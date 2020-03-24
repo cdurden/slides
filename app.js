@@ -60,7 +60,7 @@ app.directive('slideshow', ['$compile', function($compile) {
                 tex2jax: {
                   inlineMath: [ ["\\(","\\)"] ],
                   displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                  processEscapes: true
+                  //processEscapes: true
                 },
               },
               dependencies: [
