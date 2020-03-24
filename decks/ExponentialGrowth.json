@@ -2,6 +2,7 @@
     ["BacteriaScenario"],
     ["BacterialGrowthDiagram"],
     ["FindingLamp"],
+    ["PurseQuestions"],
     ["LinearGrowthQuestionSpecial"],
     ["LinearGrowthQuestionGeneral"],
     ["LinearGrowthRestatement"],
