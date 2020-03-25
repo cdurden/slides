@@ -7,10 +7,11 @@ app.config([ '$showdownProvider' , function ($showdownProvider) {
     $showdownProvider.setOption('tables', true);
 }]);
 app.config([ '$locationProvider' , function ($locationProvider) {
-    $locationProvider.html5Mode({
+/*    $locationProvider.html5Mode({
         enabled: false,
         requireBase: false
     });
+    */
 }]);
 app.controller("MyController", ["$scope", "$location", "$http", function($scope, $location, $http) {
   $scope.markdown = "";
