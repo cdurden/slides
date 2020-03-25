@@ -6,7 +6,7 @@ angular.module('slides')
     replace: true,
     //transclude: true,
     //templateUrl: 'testing.html',
-    templateUrl: './templates/html_task.html',
+    templateUrl: './templates/task.html',
     /*templateUrl: function(element, attrs) {
         console.log(attrs);
         return(attrs.id);
