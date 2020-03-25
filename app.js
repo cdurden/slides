@@ -120,7 +120,7 @@ app.directive('slideshow', ['$compile', function($compile) {
           if(Reveal.isReady()) {
             Reveal.sync();
           } else {
-            init_reveal();
+            //init_reveal();
           }
         }
       });
