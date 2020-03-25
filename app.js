@@ -104,8 +104,8 @@ app.directive('slideshow', ['$compile', function($compile) {
     */
       controller: ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $http, $routeParams) {
       $scope.slides = [];
-      hash = $location.hash();
-      deck = hash.split("/")[0];
+      hash_parts = $location.hash().split("/");
+      deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
       //deck = $location.search().deck;
       console.log(deck);
       $http({
