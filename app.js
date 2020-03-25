@@ -33,8 +33,14 @@ function init_reveal() {
             RevealBroadcast.connect( { id: 'aashjkxcvyiuqwbljdv' } );
         },  // connect to broadcast when 'a' is pressed
     },
+    anything: [ 
+        {
+          className: "question", 
+        }],
+
               dependencies: [
 		        { src: './reveal.js/plugin/math/math.js', async: true },
+                { src: './reveal.js-plugins/anything/anything.js' },
                 { src: './reveal.js/plugin/markdown/marked.js' },
                 { src: './reveal.js/plugin/markdown/markdown.js' },
                   /*
