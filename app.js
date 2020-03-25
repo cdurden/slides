@@ -78,6 +78,21 @@ app.directive('slideshow', ['$compile', function($compile) {
     scope: {
       slides: '=slideshow'
     },
+      controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
+      $scope.slides = [];
+      deck = $location.search().deck;
+      console.log(deck);
+      $http({
+        method: 'GET',
+        url: "./decks/"+deck+".json?raw=true"
+      }).then(function success(response) {
+          console.log(response);
+          $scope.slides = response.data;
+          console.log($scope.slides);
+      }, function error(response) {
+          console.error(response);
+      });
+    }
     link: function(scope, elem, attrs) {
       elem.addClass('slides');
       scope.$watch('slides', function(slides) {
@@ -138,6 +153,7 @@ app.directive('slideshow', ['$compile', function($compile) {
 }]);
 
 app.controller("MyController", ["$scope", "$location", "$http", function($scope, $location, $http) {
+    /*
   $scope.slides = [];
   deck = $location.search().deck;
   console.log(deck);
@@ -151,4 +167,5 @@ app.controller("MyController", ["$scope", "$location", "$http", function($scope,
   }, function error(response) {
       console.error(response);
   });
+  */
 }]);
