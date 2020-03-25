@@ -111,8 +111,8 @@ app.directive('slideshow', ['$compile', function($compile) {
             var steps = scope.slides[i];
     
             if (steps.length == 1) {
-              if (typeof($scope.collection) !== 'undefined') {
-                  steps[0] = $scope.collection+"/"+steps[0];
+              if (typeof(scope.collection) !== 'undefined') {
+                  steps[0] = scope.collection+"/"+steps[0];
               }
               if (steps[0].split('.').length == 1) {
                   steps[0] = steps[0]+".html";
@@ -139,8 +139,8 @@ app.directive('slideshow', ['$compile', function($compile) {
               console.log(steps.length);
               for (var j = 0; j < steps.length; j++) {
                 var subSection = angular.element("<section>");
-                if (typeof($scope.collection) !== 'undefined') {
-                    steps[j] = $scope.collection+"/"+steps[j];
+                if (typeof(scope.collection) !== 'undefined') {
+                    steps[j] = scope.collection+"/"+steps[j];
                 }
                 if (steps[j].split('.').length == 1) {
                     steps[j] = steps[j]+".html";
