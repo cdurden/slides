@@ -124,6 +124,7 @@ app.directive('slideshow', ['$compile', function($compile) {
                 script = angular.element("<script>");
                 script.attr('type', 'text/template');
                 script.attr('ng-include', "'./slides/"+steps[0]+"'");
+                section.append(script);
               } else {
                 section.attr('ng-include', "'./slides/"+steps[0]+"'");
                 section.attr("id", steps[0]);
@@ -152,6 +153,7 @@ app.directive('slideshow', ['$compile', function($compile) {
                   script = angular.element("<script>");
                   script.attr('type', 'text/template');
                   script.attr('ng-include', "'./slides/"+steps[j]+"'");
+                  section.append(script);
                 } else {
                   subSection.attr('ng-include', "'./slides/"+steps[j]+"'");
                   subSection.attr("id", steps[j]);
