@@ -21,6 +21,9 @@ angular.module('slides')
       this.$onInit = function() {
         var timer;
         var collection = this.collection;
+        var task = this.task;
+        $scope.collection = collection;
+        $scope.task = task;
         /*
         var task = this.task;
         function clearTimer() {
