@@ -4,6 +4,7 @@ angular.module('slides')
     restrict: 'A',
     require: ['snowQmTask'],
     replace: true,
+    transclude: true,
     //templateUrl: './templates/html_task.html',
     templateUrl: function(element, attrs) {
         console.log(attrs);
