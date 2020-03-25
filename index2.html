@@ -87,6 +87,17 @@ socket.on('snow_qm_task_data', update_snow_qm_task_data);
   </script>
   </head>
     <body>
+<!--
+    added
+-->
+<script type='text/javascript' src='./js/util.js'></script>
+<script type='text/javascript' src='./app.js'></script>
+<script type='text/javascript' src='./directives/wb-task.js'></script>
+<script type='text/javascript' src='./directives/snow-qm-task.js'></script>
+<script type='text/javascript' src='../services/sockets.js'></script>
+<!--
+    done added
+-->
 		<div class="reveal">
 			<div class="slides">
                 <section><snow-qm-task collection='inequalities' task='q20'></snow-qm-task></section>
@@ -129,17 +140,6 @@ socket.on('snow_qm_task_data', update_snow_qm_task_data);
 
 			});
 		</script>
-<!--
-    added
--->
-<script type='text/javascript' src='./js/util.js'></script>
-<script type='text/javascript' src='./app.js'></script>
-<script type='text/javascript' src='./directives/wb-task.js'></script>
-<script type='text/javascript' src='./directives/snow-qm-task.js'></script>
-<script type='text/javascript' src='../services/sockets.js'></script>
-<!--
-    done added
--->
 
   </body>
 </html>
