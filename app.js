@@ -106,7 +106,7 @@ app.directive('slideshow', ['$compile', function($compile) {
             var steps = scope.slides[i];
     
             if (steps.length == 1) {
-              if (len(steps[0].split('.')) == 1) {
+              if (steps[0].split('.').length == 1) {
                   steps[0] = steps[0]+".html";
               }
               if (steps[0].split('.').pop() === "md") {
