@@ -1,7 +1,4 @@
 function init_reveal() {
-          if(Reveal.isReady()) {
-            Reveal.sync();
-          } else {
             Reveal.initialize({
               math: {
                 //mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js",
@@ -118,6 +115,11 @@ app.directive('slideshow', ['$compile', function($compile) {
               $compile(section)(scope);
             }
             elem.append(section);
+          }
+          if(Reveal.isReady()) {
+            Reveal.sync();
+          } else {
+            init_reveal();
           }
         }
       });
