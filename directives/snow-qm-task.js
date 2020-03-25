@@ -31,7 +31,7 @@ angular.module('slides')
         function inject_questions() {
           console.log("injecting  questions");
           clearTimer();
-          Sockets.on('snow-qm-task', function (data) {
+          Sockets.on('snow_qm_task_data', function (data) {
             console.log(data);
             if(data['collection']==collection && data['task']==task) {
               console.log("got task");
