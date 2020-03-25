@@ -110,9 +110,9 @@ app.directive('slideshow', ['$compile', function($compile) {
                 section.attr("data-separator", '^---$');
                 script = angular.element("<script>");
                 script.attr('type', 'text/template');
-                script.attr('ng-include', "'./slides/"+steps[0]);
+                script.attr('ng-include', "'./slides/"+steps[0]+"'");
               } else {
-                section.attr('ng-include', "'./slides/"+steps[0]);
+                section.attr('ng-include', "'./slides/"+steps[0]+"'");
                 section.attr("id", steps[0]);
               }
                   /*
