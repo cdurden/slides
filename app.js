@@ -67,6 +67,19 @@ app.config([ '$locationProvider' , function ($locationProvider) {
         requireBase: false
     });
 }]);
+  app.directive('script', function() {
+    return {
+      restrict: 'E',
+      scope: false,
+      link: function(scope, elem, attr) {
+        if (attr.type === 'text/template') {
+          var code = elem.text();
+          var f = new Function(code);
+          f();
+        }
+      }
+    };
+  });
 /*
 app.config([ '$httpProvider' , function ($httpProvider) {
   $httpProvider.defaults.useXDomain = true ;
@@ -150,9 +163,10 @@ app.directive('slideshow', ['$compile', function($compile) {
                   subSection.attr("id", steps[j]);
                   subSection.attr("data-markdown", '');
                   subSection.attr("data-separator", '^---$');
-                  script = angular.element("<div>");
+                  script = angular.element("<script>");
                   script.attr('type', 'text/template');
-                  script.attr('ng-include', "'./slides/"+steps[j]+"'");
+                  //script.attr('ng-include', "'./slides/"+steps[j]+"'");
+                  script.attr('src', "'./slides/"+steps[j]+"'");
                   section.append(script);
                 } else {
                   subSection.attr('ng-include', "'./slides/"+steps[j]+"'");
