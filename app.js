@@ -35,6 +35,7 @@ app.directive('slideshow', ['$compile', function($compile) {
               section.attr("id", steps[0]);
               $compile(section)(scope);
             } else {
+              console.log(steps.length);
               for (var j = 0; j < steps.length; j++) {
                 var subSection = angular.element("<section>");
                 //if (j < steps.length - 1)
