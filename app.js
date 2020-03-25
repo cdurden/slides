@@ -64,7 +64,7 @@ app.directive('slideshow', ['$compile', function($compile) {
             }
             elem.append(section);
           }
-            /*
+            /**/
           if(Reveal.isReady()) {
             Reveal.sync();
           } else {
@@ -118,7 +118,7 @@ app.directive('slideshow', ['$compile', function($compile) {
               transition: Reveal.getQueryHash().transition || 'none',
             });
           }
-          */
+          /**/
         }
       });
     }
