@@ -89,7 +89,12 @@ app.directive('slideshow', ['$compile', function($compile) {
         url: "./decks/"+deck+".json?raw=true"
       }).then(function success(response) {
           console.log(response);
-          $scope.slides = response.data;
+          if (typeof(slides.collection) !== 'undefined') {
+            $scope.collection = collection
+            $scope.slides = response.data.slides;
+          } else {
+            $scope.slides = response.data;
+          }
           console.log($scope.slides);
       }, function error(response) {
           console.error(response);
@@ -106,6 +111,9 @@ app.directive('slideshow', ['$compile', function($compile) {
             var steps = scope.slides[i];
     
             if (steps.length == 1) {
+              if (typeof($scope.collection) !== 'undefined') {
+                  steps[0] = $scope.collection+"/"+steps[0];
+              }
               if (steps[0].split('.').length == 1) {
                   steps[0] = steps[0]+".html";
               }
