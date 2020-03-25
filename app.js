@@ -89,7 +89,7 @@ app.directive('slideshow', ['$compile', function($compile) {
         url: "./decks/"+deck+".json?raw=true"
       }).then(function success(response) {
           console.log(response);
-          if (typeof(slides.collection) !== 'undefined') {
+          if (typeof(response.data.collection) !== 'undefined') {
             $scope.collection = slides.collection
             $scope.slides = response.data.slides;
           } else {
