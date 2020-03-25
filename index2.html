@@ -8,6 +8,14 @@
     <script type="text/javascript" src="/static/js/socket.io.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!--the following script uses jquery to set up form submission via socket-->
     <script type="text/javascript" src="/static/js/socket.io.wtforms.js"></script>
+<!--
+    added
+-->
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.9/angular.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-socket-io/0.7.0/socket.min.js"></script>
+<!--
+    done added
+-->
     <script>
       var socket = io.connect('https://' + document.domain + ':' + location.port);
       socket.on('connect', function() {
@@ -122,15 +130,16 @@ socket.on('snow_qm_task_data', update_snow_qm_task_data);
 			});
 		</script>
 <!--
-    <div id="footer">
-      &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>.
-    </div>
+    added
 -->
 <script type='text/javascript' src='./js/util.js'></script>
 <script type='text/javascript' src='./app.js'></script>
 <script type='text/javascript' src='./directives/wb-task.js'></script>
 <script type='text/javascript' src='./directives/snow-qm-task.js'></script>
 <script type='text/javascript' src='../services/sockets.js'></script>
+<!--
+    done added
+-->
 
   </body>
 </html>
