@@ -48,8 +48,6 @@ function init_reveal() {
               loop: false,
               //transition: Reveal.getQueryHash().transition || 'none',
             });
-          }
-}
 }
 var app = angular.module('slides', [
     'btford.socket-io',
