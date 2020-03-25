@@ -163,13 +163,21 @@ app.directive('slideshow', ['$compile', function($compile) {
                   subSection.attr("id", steps[j]);
                   subSection.attr("data-markdown", '');
                   subSection.attr("data-separator", '^---$');
+                  div = angular.element("<div>");
+                  div.attr('ng-include', "'./slides/"+steps[j]+"'");
                   script = angular.element("<script>");
                   script.attr('type', 'text/template');
                   //script.attr('ng-include', "'./slides/"+steps[j]+"'");
+                    /*
                   script.attr('ng-include','');
                   script.attr('src', "'./slides/"+steps[j]+"'");
+                  */
                   //script.attr('src', "./slides/"+steps[j]);
-                  subSection.append(script);
+                  script_data = angular.element("<ng-include>");
+                  script.attr('ng-include','');
+                  //subSection.append(script);
+                  div.append(script);
+                  subSection.append(div);
                 } else {
                   subSection.attr('ng-include', "'./slides/"+steps[j]+"'");
                   subSection.attr("id", steps[j]);
