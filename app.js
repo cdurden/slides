@@ -139,7 +139,7 @@ app.directive('slideshow', ['$compile', function($compile) {
             }
             elem.append(section);
           }
-          $compile(elem)(scope);
+          //$compile(elem)(scope);
             /*
           if(Reveal.isReady()) {
             Reveal.sync();
