@@ -37,14 +37,14 @@ app.directive('slideshow', ['$compile', function($compile) {
             } else {
               for (var j = 0; j < steps.length; j++) {
                 var subSection = angular.element("<section>");
-                if (j < steps.length - 1)
-                  subSection.attr('data-autoslide', '1000');
+                //if (j < steps.length - 1)
+                //  subSection.attr('data-autoslide', '1000');
                 subSection.attr("data-markdown", '');
                 subSection.attr("data-separator", '^---$');
                 subSection.attr("ng-include", "'./slides/"+steps[j]+".html?raw=true'");
                 subSection.attr("id", steps[j]);
-                $compile(subSection)(scope);
                 section.append(subSection);
+                $compile(section)(scope);
               }
             }
             elem.append(section);
