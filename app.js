@@ -173,8 +173,10 @@ app.directive('slideshow', ['$compile', function($compile) {
                   script.attr('src', "'./slides/"+steps[j]+"'");
                   */
                   //script.attr('src', "./slides/"+steps[j]);
+                  /*
                   script_data = angular.element("<ng-include>");
                   script.attr('ng-include','');
+                  */
                   //subSection.append(script);
                   div.append(script);
                   subSection.append(div);
@@ -197,13 +199,11 @@ app.directive('slideshow', ['$compile', function($compile) {
             elem.append(section);
           }
           //$compile(elem)(scope);
-            /*
           if(Reveal.isReady()) {
             Reveal.sync();
           } else {
-            //init_reveal();
+            init_reveal();
           }
-          */
         }
       });
     }
