@@ -14,7 +14,7 @@ angular.module('slides')
       })
       Sockets.on('task', function (data) {
         console.log(data);
-        $scope.task = $sce.trustAsHtml(data);
+        $scope.task = $sce.trustAsHtml(data.html);
       });
       console.log("getting snow-qm task");
       this.$onInit = function() {
