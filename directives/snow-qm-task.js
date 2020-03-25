@@ -18,14 +18,17 @@ angular.module('slides')
         console.log(data);
        // TaskData.confirmSubmission(data);
       })
-      Sockets.on('task', function (data) {
-        console.log(data);
-        $scope.task = $sce.trustAsHtml(data.html);
-      });
       console.log("getting snow-qm task");
       this.$onInit = function() {
         console.log(this.collection);
         console.log(this.task);
+        Sockets.on('snow-qm-task', function (data) {
+          if(data['collection']==this.collection && data['task']==this.task) {
+            console.log("got task");
+            console.log(data);
+          }
+          $scope.task = $sce.trustAsHtml(data.html);
+        });
         Sockets.emit("get-snow-qm-task", {'collection': this.collection, 'task': this.task});
       }
       this.submit = function (ev) {
