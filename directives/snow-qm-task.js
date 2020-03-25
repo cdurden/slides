@@ -5,7 +5,8 @@ angular.module('slides')
     require: ['snowQmTask'],
     replace: true,
     templateUrl: './templates/html_task.html',
-    scope: { collection: '@', task: '@' },
+    //scope: { collection: '@', task: '@' },
+    bindToController: { collection: '@', task: '@' },
     controller: function ($scope) {
       Sockets.on('submission_confirmation', function (data) {
         console.log(data);
@@ -16,6 +17,10 @@ angular.module('slides')
         $scope.task = data;
       });
       console.log("getting snow-qm task");
+      this.$onInit = function() {
+        console.log(this.collection);
+        console.log(this.task);
+      }
       console.log($scope.collection);
       console.log($scope.task);
       Sockets.emit("get-snow-qm-task", {'collection': $scope.collection, 'task': $scope.task});
