@@ -29,6 +29,20 @@ app.directive('slideshow', ['$compile', function($compile) {
             var steps = scope.slides[i];
     
             if (steps.length == 1) {
+                /*
+              if (steps[0].split('.').pop() === "md") {
+                section.attr("id", steps[0]);
+                section.attr("data-markdown", '');
+                section.attr("data-separator", '^---$');
+                script = angular.element("<script>");
+                script.attr('type', 'text/template');
+                script.attr('ng-include', "'./slides/"+steps[0]);
+              } else {
+                section.attr('ng-include', "'./slides/"+steps[0]);
+                section.attr("id", steps[0]);
+                section.attr("data-markdown", '');
+                section.attr("data-separator", '^---$');
+              }*/
               section.attr('ng-include', "'./slides/"+steps[0]+".html?raw=true'");
               section.attr("id", steps[0]);
               section.attr("data-markdown", '');
