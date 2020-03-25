@@ -100,7 +100,13 @@ socket.on('snow_qm_task_data', update_snow_qm_task_data);
 -->
 		<div class="reveal">
 			<div class="slides">
-                <section><snow-qm-task collection='inequalities' task='q20'></snow-qm-task></section>
+<!--
+    added
+-->
+                <section><div snow-qm-task collection='inequalities' task='q20'></div></section>
+<!--
+    done added
+-->
 				<section>{{ snow_qm_task('inequalities', 'q20') }}</section>
 			</div>
 		</div>
