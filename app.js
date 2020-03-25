@@ -92,7 +92,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       }, function error(response) {
           console.error(response);
       });
-    }
+    },
     link: function(scope, elem, attrs) {
       elem.addClass('slides');
       scope.$watch('slides', function(slides) {
