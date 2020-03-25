@@ -104,7 +104,6 @@ app.directive('slideshow', ['$compile', function($compile) {
             var steps = scope.slides[i];
     
             if (steps.length == 1) {
-                /*
               if (steps[0].split('.').pop() === "md") {
                 section.attr("id", steps[0]);
                 section.attr("data-markdown", '');
@@ -115,13 +114,13 @@ app.directive('slideshow', ['$compile', function($compile) {
               } else {
                 section.attr('ng-include', "'./slides/"+steps[0]);
                 section.attr("id", steps[0]);
-                section.attr("data-markdown", '');
-                section.attr("data-separator", '^---$');
-              }*/
+              }
+                  /*
               section.attr('ng-include', "'./slides/"+steps[0]+".html?raw=true'");
               section.attr("id", steps[0]);
               section.attr("data-markdown", '');
               section.attr("data-separator", '^---$');
+              */
               $compile(section)(scope);
             } else {
               console.log(steps.length);
