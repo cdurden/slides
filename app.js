@@ -109,8 +109,8 @@ app.directive('slideshow', ['$compile', function($compile) {
                 { src: './reveal.js-plugins/broadcast/RTCMultiConnection.min.js'},
                 { src: './reveal.js-plugins/broadcast/socket.io.js'},
                 { src: './reveal.js-plugins/broadcast/bCrypt.js'},
-                */
                 { src: './reveal.js-plugins/broadcast/broadcast.js'},
+                */
                 //{ src: './reveal.js/plugin/highlight/highlight.js' },
                 //{ src: '/static/js/reveal.js/plugin/notes/notes.js', async: true },
               ],
