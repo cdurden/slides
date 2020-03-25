@@ -42,7 +42,7 @@ angular.module('slides')
           console.log("getting snow-qm task");
           console.log(collection);
           console.log(task);
-          Sockets.emit("get-snow-qm-task", {'collection': collection, 'task': task});
+          Sockets.emit("get_snow_qm_task", {'collection': collection, 'task': task});
         }
         inject_questions();
         //timer = setTimeout(function() { if(Reveal.isReady()) {inject_questions();}}, 1000); // call every 1000 milliseconds
