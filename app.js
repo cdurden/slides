@@ -1,3 +1,58 @@
+function init_reveal() {
+          if(Reveal.isReady()) {
+            Reveal.sync();
+          } else {
+            Reveal.initialize({
+              math: {
+                //mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js",
+                mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                config: 'TeX-AMS_HTML-full', // See http://docs.mathjax.org/en/latest/config-files.html
+                // pass other options into `MathJax.Hub.Config()`
+                TeX: { Macros: { RR: "{\\bf R}" } },
+                tex2jax: {
+                  inlineMath: [ ["\\(","\\)"] ],
+                  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                  //processEscapes: true
+                },
+              },
+    broadcast: {
+      secret: '$2a$05$hhgakVn1DWBfgfSwMihABeYToIBEiQGJ.ONa.HWEiNGNI6mxFCy8S',
+      // Configure RTCMultiConnection
+      connection: {
+        socketURL: 'https://revealjs-broadcast.herokuapp.com/',
+        session: {
+        audio: true,
+        video: true,
+        oneway: true
+        },
+      },
+    }, 
+    keyboard: {
+        83: function() {
+            var password = prompt("Please enter broadcast password", "");
+            RevealBroadcast.start( { id: 'aashjkxcvyiuqwbljdv', password: password } );
+        },  // create broadcast when 's' is pressed
+        65: function() {
+            RevealBroadcast.connect( { id: 'aashjkxcvyiuqwbljdv' } );
+        },  // connect to broadcast when 'a' is pressed
+    },
+              dependencies: [
+		        { src: './reveal.js/plugin/math/math.js', async: true },
+                { src: './reveal.js/plugin/markdown/marked.js' },
+                { src: './reveal.js/plugin/markdown/markdown.js' },
+                { src: './reveal.js-plugins/broadcast/RTCMultiConnection.min.js'},
+                { src: './reveal.js-plugins/broadcast/socket.io.js'},
+                { src: './reveal.js-plugins/broadcast/bCrypt.js'},
+                { src: './reveal.js-plugins/broadcast/broadcast.js'},
+                //{ src: './reveal.js/plugin/highlight/highlight.js' },
+                //{ src: '/static/js/reveal.js/plugin/notes/notes.js', async: true },
+              ],
+              hash: true,
+              loop: false,
+              //transition: Reveal.getQueryHash().transition || 'none',
+            });
+          }
+}
 var app = angular.module('slides', [
     'btford.socket-io',
     'slides.services.sockets',
@@ -63,63 +118,6 @@ app.directive('slideshow', ['$compile', function($compile) {
               $compile(section)(scope);
             }
             elem.append(section);
-          }
-          if(Reveal.isReady()) {
-            Reveal.sync();
-          } else {
-            Reveal.initialize({
-              math: {
-                //mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js",
-                mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
-                config: 'TeX-AMS_HTML-full', // See http://docs.mathjax.org/en/latest/config-files.html
-                // pass other options into `MathJax.Hub.Config()`
-                TeX: { Macros: { RR: "{\\bf R}" } },
-                tex2jax: {
-                  inlineMath: [ ["\\(","\\)"] ],
-                  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                  //processEscapes: true
-                },
-              },
-          /*
-    broadcast: {
-      secret: '$2a$05$hhgakVn1DWBfgfSwMihABeYToIBEiQGJ.ONa.HWEiNGNI6mxFCy8S',
-      // Configure RTCMultiConnection
-      connection: {
-        socketURL: 'https://revealjs-broadcast.herokuapp.com/',
-        session: {
-        audio: true,
-        video: true,
-        oneway: true
-        },
-      },
-    }, 
-    keyboard: {
-        83: function() {
-            var password = prompt("Please enter broadcast password", "");
-            RevealBroadcast.start( { id: 'aashjkxcvyiuqwbljdv', password: password } );
-        },  // create broadcast when 's' is pressed
-        65: function() {
-            RevealBroadcast.connect( { id: 'aashjkxcvyiuqwbljdv' } );
-        },  // connect to broadcast when 'a' is pressed
-    },
-    */
-              dependencies: [
-		        { src: './reveal.js/plugin/math/math.js', async: true },
-                { src: './reveal.js/plugin/markdown/marked.js' },
-                { src: './reveal.js/plugin/markdown/markdown.js' },
-                  /*
-                { src: './reveal.js-plugins/broadcast/RTCMultiConnection.min.js'},
-                { src: './reveal.js-plugins/broadcast/socket.io.js'},
-                { src: './reveal.js-plugins/broadcast/bCrypt.js'},
-                { src: './reveal.js-plugins/broadcast/broadcast.js'},
-                */
-                //{ src: './reveal.js/plugin/highlight/highlight.js' },
-                //{ src: '/static/js/reveal.js/plugin/notes/notes.js', async: true },
-              ],
-              hash: true,
-              loop: false,
-              //transition: Reveal.getQueryHash().transition || 'none',
-            });
           }
         }
       });
