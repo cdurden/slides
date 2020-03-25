@@ -7,3 +7,6 @@
 .lg-font {
     font-size: 36pt;
 }
+table td {
+    padding: 10px;
+}
