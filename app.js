@@ -80,6 +80,7 @@ app.directive('slideshow', ['$compile', function($compile) {
                   //processEscapes: true
                 },
               },
+          /*
     broadcast: {
       secret: '$2a$05$hhgakVn1DWBfgfSwMihABeYToIBEiQGJ.ONa.HWEiNGNI6mxFCy8S',
       // Configure RTCMultiConnection
@@ -101,6 +102,7 @@ app.directive('slideshow', ['$compile', function($compile) {
             RevealBroadcast.connect( { id: 'aashjkxcvyiuqwbljdv' } );
         },  // connect to broadcast when 'a' is pressed
     },
+    */
               dependencies: [
 		        { src: './reveal.js/plugin/math/math.js', async: true },
                 { src: './reveal.js/plugin/markdown/marked.js' },
