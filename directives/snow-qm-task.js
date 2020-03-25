@@ -7,14 +7,14 @@ angular.module('slides')
     templateUrl: './templates/html_task.html',
     scope: { collection: '=', task: '=' },
     bindToController: { collection: '@', task: '@' },
-    controller: function ($scope) {
+    controller: ["$scope","$sce", function ($scope, $sce) {
       Sockets.on('submission_confirmation', function (data) {
         console.log(data);
        // TaskData.confirmSubmission(data);
       })
       Sockets.on('task', function (data) {
         console.log(data);
-        $scope.task = data;
+        $scope.task = $sce.trustAsHtml(data);
       });
       console.log("getting snow-qm task");
       this.$onInit = function() {
@@ -27,7 +27,7 @@ angular.module('slides')
           Sockets.emit("submit");
           return false;
       }
-    },
+    }],
     link: function (scope, element, attrs, ctrls) {
 //      var taskCtrl = ctrls[0];
 //      $(element).find("form").on("submit", taskCtrl.submit);
