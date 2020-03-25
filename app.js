@@ -122,7 +122,7 @@ app.directive('slideshow', ['$compile', function($compile) {
               section.attr("id", steps[0]);
               section.attr("data-markdown", '');
               section.attr("data-separator", '^---$');
-              //$compile(section)(scope);
+              $compile(section)(scope);
             } else {
               console.log(steps.length);
               for (var j = 0; j < steps.length; j++) {
@@ -135,7 +135,7 @@ app.directive('slideshow', ['$compile', function($compile) {
                 subSection.attr("id", steps[j]);
                 section.append(subSection);
               }
-              //$compile(section)(scope);
+              $compile(section)(scope);
             }
             elem.append(section);
           }
