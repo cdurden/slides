@@ -75,10 +75,11 @@ app.config([ '$httpProvider' , function ($httpProvider) {
 */
 app.directive('slideshow', ['$compile', function($compile) {
   return {
-    scope: {
-      slides: '=slideshow'
-    },
       /*
+    scope: {
+      slides: '=slides'
+    },
+    */
       controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
       $scope.slides = [];
       deck = $location.search().deck;
@@ -94,7 +95,6 @@ app.directive('slideshow', ['$compile', function($compile) {
           console.error(response);
       });
     }],
-    */
     link: function(scope, elem, attrs) {
       elem.addClass('slides');
       scope.$watch('slides', function(slides) {
@@ -155,6 +155,7 @@ app.directive('slideshow', ['$compile', function($compile) {
 }]);
 
 app.controller("MyController", ["$scope", "$location", "$http", function($scope, $location, $http) {
+    /*
   $scope.slides = [];
   deck = $location.search().deck;
   console.log(deck);
@@ -168,4 +169,5 @@ app.controller("MyController", ["$scope", "$location", "$http", function($scope,
   }, function error(response) {
       console.error(response);
   });
+  */
 }]);
