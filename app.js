@@ -166,7 +166,9 @@ app.directive('slideshow', ['$compile', function($compile) {
                   script = angular.element("<script>");
                   script.attr('type', 'text/template');
                   //script.attr('ng-include', "'./slides/"+steps[j]+"'");
-                  script.attr('src', "./slides/"+steps[j]);
+                  script.attr('ng-include','');
+                  script.attr('src', "'./slides/"+steps[j]+"'");
+                  //script.attr('src', "./slides/"+steps[j]);
                   subSection.append(script);
                 } else {
                   subSection.attr('ng-include', "'./slides/"+steps[j]+"'");
