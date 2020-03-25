@@ -7,9 +7,10 @@ function init_reveal() {
                 // pass other options into `MathJax.Hub.Config()`
                 TeX: { Macros: { RR: "{\\bf R}" } },
                 tex2jax: {
-                  inlineMath: [ ["\\(","\\)"] ],
+                  //inlineMath: [ ["\\(","\\)"] ],
+                  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                   displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                  //processEscapes: true
+                  processEscapes: true
                 },
               },
     broadcast: {
