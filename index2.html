@@ -1,7 +1,6 @@
 <!doctype html>
-<html>
+<html ng-app='slides' class='reveal' ng-controller='MyController'>
   <head>
-{% from "macros.html" import snow_qm_task %}.
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/algebra742live.css') }}">
     <title>Algebra742Live</title>
@@ -82,6 +81,7 @@ socket.on('snow_qm_task_data', update_snow_qm_task_data);
     <body>
 		<div class="reveal">
 			<div class="slides">
+                <section><snow-qm-task collection='inequalities' task='q20'></snow-qm-task></section>
 				<section>{{ snow_qm_task('inequalities', 'q20') }}</section>
 			</div>
 		</div>
@@ -126,5 +126,11 @@ socket.on('snow_qm_task_data', update_snow_qm_task_data);
       &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>.
     </div>
 -->
+<script type='text/javascript' src='./js/util.js'></script>
+<script type='text/javascript' src='./app.js'></script>
+<script type='text/javascript' src='./directives/wb-task.js'></script>
+<script type='text/javascript' src='./directives/snow-qm-task.js'></script>
+<script type='text/javascript' src='../services/sockets.js'></script>
+
   </body>
 </html>
