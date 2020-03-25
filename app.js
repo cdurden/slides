@@ -52,7 +52,7 @@ function init_reveal() {
                 //{ src: './reveal.js/plugin/highlight/highlight.js' },
                 //{ src: '/static/js/reveal.js/plugin/notes/notes.js', async: true },
               ],
-              //hash: true,
+              hash: true,
               loop: false,
               //transition: Reveal.getQueryHash().transition || 'none',
             });
