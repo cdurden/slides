@@ -105,9 +105,9 @@ app.directive('slideshow', ['$compile', function($compile) {
     */
               dependencies: [
 		        { src: './reveal.js/plugin/math/math.js', async: true },
-                  /*
                 { src: './reveal.js/plugin/markdown/marked.js' },
                 { src: './reveal.js/plugin/markdown/markdown.js' },
+                  /*
                 { src: './reveal.js-plugins/broadcast/RTCMultiConnection.min.js'},
                 { src: './reveal.js-plugins/broadcast/socket.io.js'},
                 { src: './reveal.js-plugins/broadcast/bCrypt.js'},
