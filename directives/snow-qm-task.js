@@ -37,7 +37,7 @@ angular.module('slides')
           });
           Sockets.emit("get-snow-qm-task", {'collection': this.collection, 'task': this.task});
         }
-        timer = setTimeout(if(Reveal.isReady()) inject_questions(), 1000); // call every 1000 milliseconds
+        timer = setTimeout(function() { if(Reveal.isReady()) inject_questions()}, 1000); // call every 1000 milliseconds
       }
       this.submit = function (ev) {
           ev.preventDefault(); // prevents page reloading
