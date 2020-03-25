@@ -26,13 +26,13 @@ app.directive('slideshow', ['$compile', function($compile) {
           console.log("updating slides");
           for (var i = 0; i < scope.slides.length; i++) {
             var section = angular.element("<section>");
-            section.attr("data-markdown", '');
-            section.attr("data-separator", '^---$');
             var steps = scope.slides[i];
     
             if (steps.length == 1) {
               section.attr('ng-include', "'./slides/"+steps[0]+".html?raw=true'");
               section.attr("id", steps[0]);
+              section.attr("data-markdown", '');
+              section.attr("data-separator", '^---$');
               $compile(section)(scope);
             } else {
               console.log(steps.length);
