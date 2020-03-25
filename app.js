@@ -45,8 +45,8 @@ app.directive('slideshow', ['$compile', function($compile) {
                 subSection.attr("ng-include", "'./slides/"+steps[j]+".html?raw=true'");
                 subSection.attr("id", steps[j]);
                 section.append(subSection);
-                $compile(section)(scope);
               }
+              $compile(section)(scope);
             }
             elem.append(section);
           }
