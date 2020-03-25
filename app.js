@@ -32,6 +32,7 @@ app.directive('slideshow', ['$compile', function($compile) {
     
             if (steps.length == 1) {
               section.attr('ng-include', "'./slides/"+steps[0]+".html?raw=true'");
+              section.attr("id", steps[0]);
               $compile(section)(scope);
             } else {
               for (var j = 0; j < steps.length; j++) {
@@ -41,6 +42,7 @@ app.directive('slideshow', ['$compile', function($compile) {
                 subSection.attr("data-markdown", '');
                 subSection.attr("data-separator", '^---$');
                 subSection.attr("ng-include", "'./slides/"+steps[j]+".html?raw=true'");
+                subSection.attr("id", steps[j]);
                 $compile(subSection)(scope);
                 section.append(subSection);
               }
