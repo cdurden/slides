@@ -5,8 +5,8 @@ angular.module('slides')
     require: ['snowQmTask'],
     replace: true,
     templateUrl: './templates/html_task.html',
-    //scope: { collection: '@', task: '@' },
-    bindToController: { collection: '@', task: '@' },
+    scope: { collection: '=', task: '=' },
+    //bindToController: { collection: '@', task: '@' },
     controller: function ($scope) {
       Sockets.on('submission_confirmation', function (data) {
         console.log(data);
