@@ -64,11 +64,11 @@ app.directive('slideshow', ['$compile', function($compile) {
             }
             elem.append(section);
           }
-          /*
           if(Reveal.isReady()) {
             Reveal.sync();
           } else {
             Reveal.initialize({
+          /*
               math: {
                 //mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js",
                 mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
@@ -116,9 +116,9 @@ app.directive('slideshow', ['$compile', function($compile) {
               hash: true,
               loop: false,
               transition: Reveal.getQueryHash().transition || 'none',
+          */
             });
           }
-          */
         }
       });
     }
