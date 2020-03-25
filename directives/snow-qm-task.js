@@ -3,13 +3,13 @@ angular.module('slides')
   return {
     restrict: 'A',
     require: ['snowQmTask'],
-    replace: true,
+    replace: false,
     transclude: true,
     //templateUrl: './templates/html_task.html',
-    templateUrl: function(element, attrs) {
+    /*templateUrl: function(element, attrs) {
         console.log(attrs);
         return(attrs.id);
-    },
+    },*/
     scope: { collection: '=', task: '=' },
     bindToController: { collection: '@', task: '@' },
     controller: ["$scope","$sce", function ($scope, $sce) {
