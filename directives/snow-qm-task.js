@@ -32,8 +32,8 @@ angular.module('slides')
             console.log(data);
             if(data['collection']==collection && data['task']==task) {
               console.log("got task");
+              $scope.task = $sce.trustAsHtml(data.html);
             }
-            $scope.task = $sce.trustAsHtml(data.html);
           });
           console.log("getting snow-qm task");
           console.log(collection);
