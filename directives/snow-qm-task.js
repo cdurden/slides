@@ -41,8 +41,8 @@ angular.module('slides')
           console.log(task);
           Sockets.emit("get-snow-qm-task", {'collection': collection, 'task': task});
         }
-        */
         inject_questions();
+        */
         //timer = setTimeout(function() { if(Reveal.isReady()) {inject_questions();}}, 1000); // call every 1000 milliseconds
         //timer = setTimeout(function() { inject_questions();}, 1000); // call every 1000 milliseconds
       }
@@ -59,7 +59,7 @@ angular.module('slides')
           var collection = scope.collection;
           var task = scope.task;
           console.log("injecting  questions");
-          clearTimer();
+          //clearTimer();
           Sockets.on('snow-qm-task', function (data) {
             console.log(data);
             if(data['collection']==collection && data['task']==task) {
