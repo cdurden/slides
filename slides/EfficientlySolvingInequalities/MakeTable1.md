@@ -1,0 +1,2 @@
+1. Look at the $x$ values in the top row of the table. For each $x$ value, find the value of $-x$. Then determine whether the inequality $\text-x \geq \text-4$ is true:
+<div><div snow-qm-task collection="inequalities" task="q19"></div></div>
