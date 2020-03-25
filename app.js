@@ -65,11 +65,11 @@ var app = angular.module('slides', [
 app.config([ '$locationProvider' , function ($locationProvider) {
     $locationProvider.html5Mode({
         enabled: true,
-        requireBase: false
+        requireBase: true
     });
 }]);
 app.config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/:deck', {
+        $routeProvider.when('/#:deck', {
             templateUrl: 'index.html',
             controller: 'MyController'
             });
@@ -102,9 +102,9 @@ app.directive('slideshow', ['$compile', function($compile) {
       slides: '=slides'
     },
     */
-      controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
+      controller: ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $routeParams) {
       $scope.slides = [];
-      deck = $scope.deck;
+      deck = $routeParams.deck;
       //deck = $location.search().deck;
       console.log(deck);
       $http({
