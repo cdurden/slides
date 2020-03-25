@@ -81,6 +81,7 @@ app.directive('slideshow', ['$compile', function($compile) {
     link: function(scope, elem, attrs) {
       elem.addClass('slides');
       scope.$watch('slides', function(slides) {
+        console.log(slides);
         if (slides.length) {
           console.log("updating slides");
           for (var i = 0; i < scope.slides.length; i++) {
