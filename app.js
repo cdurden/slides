@@ -121,7 +121,7 @@ app.directive('slideshow', ['$compile', function($compile) {
                 section.attr("id", steps[0]);
                 section.attr("data-markdown", '');
                 section.attr("data-separator", '^---$');
-                script = angular.element("<script>");
+                script = angular.element("<div>");
                 script.attr('type', 'text/template');
                 script.attr('ng-include', "'./slides/"+steps[0]+"'");
                 section.append(script);
