@@ -15,6 +15,7 @@ angular.module('slides')
         console.log(data);
         $scope.task = data;
       });
+      console.log("getting snow-qm task");
       Sockets.emit("get-snow-qm-task", {'collection': $scope.collection, 'task': $scope.task});
       this.submit = function (ev) {
           ev.preventDefault(); // prevents page reloading
