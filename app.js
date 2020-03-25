@@ -121,6 +121,6 @@ app.controller("MyController", ["$scope", "$location", "$http", function($scope,
       $scope.slides = response.data;
       console.log($scope.slides);
   }, function error(response) {
-      console.err(error);
+      console.err(response);
   });
 }]);
