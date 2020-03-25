@@ -90,7 +90,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       }).then(function success(response) {
           console.log(response);
           if (typeof(slides.collection) !== 'undefined') {
-            $scope.collection = collection
+            $scope.collection = slides.collection
             $scope.slides = response.data.slides;
           } else {
             $scope.slides = response.data;
