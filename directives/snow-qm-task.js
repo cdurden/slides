@@ -40,7 +40,8 @@ angular.module('slides')
           console.log(task);
           Sockets.emit("get-snow-qm-task", {'collection': collection, 'task': task});
         }
-        timer = setTimeout(function() { if(Reveal.isReady()) {inject_questions();}}, 1000); // call every 1000 milliseconds
+        inject_questions();
+        //timer = setTimeout(function() { if(Reveal.isReady()) {inject_questions();}}, 1000); // call every 1000 milliseconds
         //timer = setTimeout(function() { inject_questions();}, 1000); // call every 1000 milliseconds
       }
       this.submit = function (ev) {
