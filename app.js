@@ -104,7 +104,7 @@ app.directive('slideshow', ['$compile', function($compile) {
     */
       controller: ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $http, $routeParams) {
       $scope.slides = [];
-      deck = $routeParams.deck;
+      deck = $location.hash();
       //deck = $location.search().deck;
       console.log(deck);
       $http({
