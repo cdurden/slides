@@ -58,9 +58,11 @@ angular.module('slides')
     link: function (scope, element, attrs, ctrls) {
 //      var taskCtrl = ctrls[0];
 //      $(element).find("form").on("submit", taskCtrl.submit);
+      this.$onInit = function() {
+      //  var timer;
+        var collection = this.collection;
+        var task = this.task;
         function inject_questions() {
-          var collection = scope.collection;
-          var task = scope.task;
           console.log("injecting  questions");
           //clearTimer();
           Sockets.on('snow-qm-task', function (data) {
@@ -77,6 +79,7 @@ angular.module('slides')
           Sockets.emit("get-snow-qm-task", {'collection': collection, 'task': task});
         }
         inject_questions();
+      }
     }
   }
 }]);
