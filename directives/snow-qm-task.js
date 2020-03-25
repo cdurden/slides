@@ -3,7 +3,7 @@ angular.module('slides')
   return {
     restrict: 'A',
     require: ['snowQmTask'],
-    replace: false,
+    replace: true,
     //transclude: true,
     //templateUrl: 'testing.html',
     templateUrl: './templates/html_task.html',
@@ -23,9 +23,9 @@ angular.module('slides')
         console.log(this.collection);
         console.log(this.task);
         Sockets.on('snow-qm-task', function (data) {
+          console.log(data);
           if(data['collection']==this.collection && data['task']==this.task) {
             console.log("got task");
-            console.log(data);
           }
           $scope.task = $sce.trustAsHtml(data.html);
         });
