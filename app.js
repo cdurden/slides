@@ -116,8 +116,8 @@ app.directive('slideshow', ['$compile', function($compile) {
                 //{ src: './reveal.js/plugin/highlight/highlight.js' },
                 //{ src: '/static/js/reveal.js/plugin/notes/notes.js', async: true },
               ],
-              //hash: true,
-              //loop: false,
+              hash: true,
+              loop: false,
               //transition: Reveal.getQueryHash().transition || 'none',
             });
           }
