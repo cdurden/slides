@@ -21,6 +21,7 @@ angular.module('slides')
       this.$onInit = function() {
         var timer;
         var collection = this.collection;
+        /*
         var task = this.task;
         function clearTimer() {
           clearTimeout(timer);
@@ -40,6 +41,7 @@ angular.module('slides')
           console.log(task);
           Sockets.emit("get-snow-qm-task", {'collection': collection, 'task': task});
         }
+        */
         inject_questions();
         //timer = setTimeout(function() { if(Reveal.isReady()) {inject_questions();}}, 1000); // call every 1000 milliseconds
         //timer = setTimeout(function() { inject_questions();}, 1000); // call every 1000 milliseconds
@@ -53,6 +55,25 @@ angular.module('slides')
     link: function (scope, element, attrs, ctrls) {
 //      var taskCtrl = ctrls[0];
 //      $(element).find("form").on("submit", taskCtrl.submit);
+        function inject_questions() {
+          var collection = scope.collection;
+          var task = scope.task;
+          console.log("injecting  questions");
+          clearTimer();
+          Sockets.on('snow-qm-task', function (data) {
+            console.log(data);
+            if(data['collection']==collection && data['task']==task) {
+              console.log("got task");
+              $(element).html(data.html);
+              //$scope.task = $sce.trustAsHtml(data.html);
+            }
+          });
+          console.log("getting snow-qm task");
+          console.log(collection);
+          console.log(task);
+          Sockets.emit("get-snow-qm-task", {'collection': collection, 'task': task});
+        }
+        inject_questions();
     }
   }
 }]);
