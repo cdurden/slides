@@ -18,25 +18,27 @@ angular.module('slides')
         console.log(data);
        // TaskData.confirmSubmission(data);
       })
-      console.log("getting snow-qm task");
       this.$onInit = function() {
         var timer;
+        var collection = this.collection;
+        var task = this.task;
         function clearTimer() {
           clearTimeout(timer);
         }
-        console.log(this.collection);
-        console.log(this.task);
         function inject_questions() {
           console.log("injecting  questions");
           clearTimer();
           Sockets.on('snow-qm-task', function (data) {
             console.log(data);
-            if(data['collection']==this.collection && data['task']==this.task) {
+            if(data['collection']==collection && data['task']==task) {
               console.log("got task");
             }
             $scope.task = $sce.trustAsHtml(data.html);
           });
-          Sockets.emit("get-snow-qm-task", {'collection': this.collection, 'task': this.task});
+          console.log("getting snow-qm task");
+          console.log(collection);
+          console.log(task);
+          Sockets.emit("get-snow-qm-task", {'collection': collection, 'task': task});
         }
         timer = setTimeout(function() { if(Reveal.isReady()) {inject_questions();}}, 1000); // call every 1000 milliseconds
       }
