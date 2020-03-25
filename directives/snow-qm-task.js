@@ -32,12 +32,15 @@ angular.module('slides')
           console.log("injecting  questions");
           clearTimer();
           Sockets.on('snow_qm_task_data', function (data) {
+            update_snow_qm_task_data(data);
+              /*
             console.log(data);
             if(data['collection']==collection && data['task']==task) {
               console.log("got task");
               //$scope.task = $sce.trustAsHtml(data.html);
               $($element).html(data.html);
             }
+            */
           });
           console.log("getting snow-qm task");
           console.log(collection);
