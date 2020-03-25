@@ -50,6 +50,7 @@ function init_reveal() {
             });
           }
 }
+}
 var app = angular.module('slides', [
     'btford.socket-io',
     'slides.services.sockets',
