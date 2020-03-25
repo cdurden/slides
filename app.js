@@ -123,11 +123,13 @@ app.directive('slideshow', ['$compile', function($compile) {
             }
             elem.append(section);
           }
+            /*
           if(Reveal.isReady()) {
             Reveal.sync();
           } else {
             //init_reveal();
           }
+          */
         }
       });
     }
