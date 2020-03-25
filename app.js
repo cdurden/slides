@@ -68,7 +68,6 @@ app.directive('slideshow', ['$compile', function($compile) {
             Reveal.sync();
           } else {
             Reveal.initialize({
-          /*
               math: {
                 //mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js",
                 mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
@@ -81,6 +80,7 @@ app.directive('slideshow', ['$compile', function($compile) {
                   //processEscapes: true
                 },
               },
+          /*
     broadcast: {
       secret: '$2a$05$hhgakVn1DWBfgfSwMihABeYToIBEiQGJ.ONa.HWEiNGNI6mxFCy8S',
       // Configure RTCMultiConnection
@@ -102,21 +102,23 @@ app.directive('slideshow', ['$compile', function($compile) {
             RevealBroadcast.connect( { id: 'aashjkxcvyiuqwbljdv' } );
         },  // connect to broadcast when 'a' is pressed
     },
+    */
               dependencies: [
 		        { src: './reveal.js/plugin/math/math.js', async: true },
+                  /*
                 { src: './reveal.js/plugin/markdown/marked.js' },
                 { src: './reveal.js/plugin/markdown/markdown.js' },
                 { src: './reveal.js-plugins/broadcast/RTCMultiConnection.min.js'},
                 { src: './reveal.js-plugins/broadcast/socket.io.js'},
                 { src: './reveal.js-plugins/broadcast/bCrypt.js'},
                 { src: './reveal.js-plugins/broadcast/broadcast.js'},
+                */
                 //{ src: './reveal.js/plugin/highlight/highlight.js' },
                 //{ src: '/static/js/reveal.js/plugin/notes/notes.js', async: true },
               ],
-              hash: true,
-              loop: false,
-              transition: Reveal.getQueryHash().transition || 'none',
-          */
+              //hash: true,
+              //loop: false,
+              //transition: Reveal.getQueryHash().transition || 'none',
             });
           }
         }
