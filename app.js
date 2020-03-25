@@ -60,6 +60,7 @@ function init_reveal() {
 var app = angular.module('slides', [
     'btford.socket-io',
     'slides.services.sockets',
+    'ngRoute',
 ]);
 app.config([ '$locationProvider' , function ($locationProvider) {
     $locationProvider.html5Mode({
@@ -67,6 +68,13 @@ app.config([ '$locationProvider' , function ($locationProvider) {
         requireBase: false
     });
 }]);
+app.config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.when('/:deck', {
+            templateUrl: 'index.html',
+            controller: 'MyController'
+            });
+}]);
+/*
   app.directive('script', function() {
     return {
       restrict: 'E',
@@ -80,6 +88,7 @@ app.config([ '$locationProvider' , function ($locationProvider) {
       }
     };
   });
+  */
 /*
 app.config([ '$httpProvider' , function ($httpProvider) {
   $httpProvider.defaults.useXDomain = true ;
@@ -210,7 +219,8 @@ app.directive('slideshow', ['$compile', function($compile) {
   };
 }]);
 
-app.controller("MyController", ["$scope", "$location", "$http", function($scope, $location, $http) {
+app.controller("MyController", ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $http, $routeParams) {
+  $scope.deck = $routeParams.deck;
     /*
   $scope.slides = [];
   deck = $location.search().deck;
