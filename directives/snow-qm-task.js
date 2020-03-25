@@ -6,7 +6,7 @@ angular.module('slides')
     replace: true,
     templateUrl: './templates/html_task.html',
     scope: { collection: '=', task: '=' },
-    bindToController: { collection: '=', task: '=' },
+    bindToController: { collection: '@', task: '@' },
     controller: function ($scope) {
       Sockets.on('submission_confirmation', function (data) {
         console.log(data);
