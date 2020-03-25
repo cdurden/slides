@@ -19,17 +19,25 @@ angular.module('slides')
        // TaskData.confirmSubmission(data);
       })
       console.log("getting snow-qm task");
+      var timer;
+      function clearTimer() {
+        clearTimeout(timer);
+      }
       this.$onInit = function() {
         console.log(this.collection);
         console.log(this.task);
-        Sockets.on('snow-qm-task', function (data) {
-          console.log(data);
-          if(data['collection']==this.collection && data['task']==this.task) {
-            console.log("got task");
-          }
-          $scope.task = $sce.trustAsHtml(data.html);
-        });
-        Sockets.emit("get-snow-qm-task", {'collection': this.collection, 'task': this.task});
+        function inject_questions() {
+          clearTimer();
+          Sockets.on('snow-qm-task', function (data) {
+            console.log(data);
+            if(data['collection']==this.collection && data['task']==this.task) {
+              console.log("got task");
+            }
+            $scope.task = $sce.trustAsHtml(data.html);
+          });
+          Sockets.emit("get-snow-qm-task", {'collection': this.collection, 'task': this.task});
+        }
+        timer = setTimeout(if(Reveal.isReady()) inject_questions(), 1000); // call every 1000 milliseconds
       }
       this.submit = function (ev) {
           ev.preventDefault(); // prevents page reloading
