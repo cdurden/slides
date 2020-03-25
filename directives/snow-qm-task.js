@@ -20,10 +20,8 @@ angular.module('slides')
       this.$onInit = function() {
         console.log(this.collection);
         console.log(this.task);
+        Sockets.emit("get-snow-qm-task", {'collection': $scope.collection, 'task': $scope.task});
       }
-      console.log($scope.collection);
-      console.log($scope.task);
-      Sockets.emit("get-snow-qm-task", {'collection': $scope.collection, 'task': $scope.task});
       this.submit = function (ev) {
           ev.preventDefault(); // prevents page reloading
           Sockets.emit("submit");
