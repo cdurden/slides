@@ -94,15 +94,13 @@ app.directive('slideshow', ['$compile', function($compile) {
     template: '<ng-component ng-repeat="section in sections"><slides-section section="section" srcl="srca[$index]"></slides-section></ng-component>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
       console.log("slideshow controller");
-      $scope.slides = [];
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
-      $scope.deck = deck;
       console.log(deck);
       setTimeout(function() {
         $http({
           method: 'GET',
-          url: "./decks/"+$scope.deck+".json?raw=true"
+          url: "./decks/"+deck+".json?raw=true"
         }).then(function success(response) {
             console.log(response);
             console.log($scope.slides);
@@ -115,7 +113,8 @@ app.directive('slideshow', ['$compile', function($compile) {
             console.log($scope.srca);
             //$compile(element)($scope);
         }, function error(response) {
-            $scope.slides = [];
+            $scope.sections = [];
+            $scope.srca = [];
             console.error(response);
         });
       },1000);
@@ -127,8 +126,9 @@ app.directive('slideshow', ['$compile', function($compile) {
 }]);
 app.directive("slidesSection", function() {
   return {
-    templateUrl: './templates/section.html',
     restrict: 'E',
+    //templateUrl: './templates/section.html',
+    template: '<section ng-repeat="slide in section"><html-slide slide="slide" src="srcl[$index]"></html-slide></ng-init></section>',
     replace: true,
     require: '^slideshow',
     scope: {
