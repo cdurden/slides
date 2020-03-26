@@ -241,7 +241,7 @@ app.directive('slideshow', ['$compile', function($compile) {
           $scope.slides = [];
           console.error(response);
       });
-      elem.addClass('slides');
+      //elem.addClass('slides');
     }],
   };
 }]);
