@@ -132,6 +132,7 @@ app.directive("slides", function() {
     controller: ["$scope", function($scope) {
         console.log("slides directive called");
         console.log($scope.slides);
+        console.log($scope.collection);
     }],
   };
 })

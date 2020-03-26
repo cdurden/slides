@@ -1,6 +1,6 @@
 <ng-repeat="section in slides">
     <ng-if="section.length == 1" ng-init="slide = section[0]">
-        <ng-init="src = typeof(collection) !== 'undefined' ? collection+"/"+slide : slide">
+        <ng-init="src = (typeof(collection) !== 'undefined') ? collection+"/"+slide : slide">
             <ng-if="src.split('.').length==1">
                 <section ng-include="'./slides/'+src+'.html'" id="src+'.html'"></section>
             </ng-if>
