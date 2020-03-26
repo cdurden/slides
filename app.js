@@ -211,7 +211,9 @@ app.directive('slideshow', ['$compile', function($compile) {
       collection: '@'
     },
       templateUrl: './templates/slides.html',
-      controller: ["$scope", "$location", "$http", "$sce", function($scope, $location, $http, $sce) {
+      //controller: ["$scope", "$location", "$http", function($scope, $location, $http, $sce) {
+    //}],
+    link: ["$scope", "$location", "$http", function(scope, elem, attrs, $http) {
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
       $scope.deck = deck;
@@ -233,12 +235,8 @@ app.directive('slideshow', ['$compile', function($compile) {
           $scope.slides = [];
           console.error(response);
       });
-    }],
-      /*
-    link: ["$http", function(scope, elem, attrs, $http) {
       elem.addClass('slides');
     }]
-    */
   };
 }]);
 
