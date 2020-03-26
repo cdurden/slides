@@ -231,13 +231,14 @@ app.directive('slideshow', ['$compile', function($compile) {
         url: "./decks/"+$scope.deck+".json?raw=true"
       }).then(function success(response) {
           console.log(response);
+          console.log($scope.slides);
           if (typeof(response.data.collection) !== 'undefined') {
             $scope.collection = response.data.collection
-            $scope.slides = response.data.slides;
+            setTimeout(function($scope.slides = response.data.slides;) {}, 50000);
           } else {
-            $scope.slides = response.data;
+            setTimeout(function($scope.slides = response.data.slides;) {}, 50000);
+            //$scope.slides = response.data;
           }
-          setTimeout(50000);
           console.log($scope.slides);
       }, function error(response) {
           $scope.slides = [];
