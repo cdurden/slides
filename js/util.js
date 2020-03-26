@@ -1,3 +1,15 @@
+function get_slide_src(slide, collection) {
+    var src;
+    if (typeof(scope.collection) !== 'undefined') {
+        src = scope.collection+"/"+slide;
+    }
+    if(slide.split('.').length === 1) {
+        src = src+".html";
+    }
+    if (steps[0].split('.').pop() === "md") {
+        src = src+".md";
+    }
+}
 function update_snow_qm_task_data(data) {
   //container = document.getElementById('snow-qm_'+data.graph+"_"+data.task);
   container = $('div.snow-qm-task[source="snow-qm:'+data.collection+":"+data.task+'"]');
