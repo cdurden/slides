@@ -209,7 +209,7 @@ app.directive('slideshow', ['$compile', function($compile) {
     scope: {
       slides: '@'
     },
-      template: '<ng-bind-html="slides"></ng-bind>';
+      template: '<ng-bind-html="slides"></ng-bind>',
       controller: ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $http, $routeParams) {
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
