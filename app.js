@@ -234,11 +234,10 @@ app.directive('slideshow', ['$compile', function($compile) {
           if (typeof(response.data.collection) !== 'undefined') {
             $scope.collection = response.data.collection
             $scope.slides = response.data.slides;
-            console.log(scope.slides);
           } else {
             $scope.slides = response.data;
-            console.log(scope.slides);
           }
+          setTimeout(10000);
           console.log($scope.slides);
       }, function error(response) {
           $scope.slides = [];
