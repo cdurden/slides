@@ -51,15 +51,13 @@ angular.module('slides')
         //timer = setTimeout(function() { if(Reveal.isReady()) {inject_questions();}}, 1000); // call every 1000 milliseconds
         //timer = setTimeout(function() { inject_questions();}, 1000); // call every 1000 milliseconds
       }
-      this.submit = function (ev) {
-          ev.preventDefault(); // prevents page reloading
-          Sockets.emit("submit");
-          return false;
-      }
     }],
     link: function (scope, element, attrs, ctrls) {
 //      var taskCtrl = ctrls[0];
-//      $(element).find("form").on("submit", taskCtrl.submit);
+      $(element).find("form").on("submit", function (e) {
+        Sockets.emit('form_submit', data=getFormData( $(this) ));
+        e.preventDefault(); // block the traditional submission of the form.
+    });
     }
   }
 }]);
