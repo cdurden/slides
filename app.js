@@ -216,7 +216,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       //deck = $location.search().deck;
       console.log(deck);
     }],
-    link: function(scope, elem, attrs) {
+    link: ["$http", function(scope, elem, attrs, $http) {
       $http({
         method: 'GET',
         url: "./decks/"+scope.deck+".json?raw=true"
@@ -234,7 +234,7 @@ app.directive('slideshow', ['$compile', function($compile) {
           console.error(response);
       });
       elem.addClass('slides');
-    }
+    }]
   };
 }]);
 
