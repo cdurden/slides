@@ -7,7 +7,7 @@ function update_snow_qm_task_data(data) {
   form = $(container).find('form');
   $(form).append($(document.createElement('input')).attr('name','collection').attr('type','hidden').val(data.collection));
   $(form).append($(document.createElement('input')).attr('name','task').attr('type','hidden').val(data.task));
-  $(container).find('script').each(function(elmt) {
+  $(container).find('script').each(function(i,elmt) {
     var code = $(elmt).text();
     var f = new Function(code);
     f();
