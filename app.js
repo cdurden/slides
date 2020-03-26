@@ -218,7 +218,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       console.log(deck);
       $http({
         method: 'GET',
-        url: "./decks/"+scope.deck+".json?raw=true"
+        url: "./decks/"+$scope.deck+".json?raw=true"
       }).then(function success(response) {
           console.log(response);
           if (typeof(response.data.collection) !== 'undefined') {
