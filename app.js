@@ -207,9 +207,10 @@ app.config([ '$httpProvider' , function ($httpProvider) {
 app.directive('slideshow', ['$compile', function($compile) {
   return {
     bindToController: {
-      slides: '@'
+      slides: '@',
+      collection: '@'
     },
-      template: '<div ng-bind-html="slides"></div>',
+      templateUrl: './templates/slides.html',
       controller: ["$scope", "$location", "$http", "$sce", function($scope, $location, $http, $sce) {
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
@@ -222,14 +223,14 @@ app.directive('slideshow', ['$compile', function($compile) {
       }).then(function success(response) {
           console.log(response);
           if (typeof(response.data.collection) !== 'undefined') {
-            collection = response.data.collection
-            slides = response.data.slides;
+            $scope.collection = response.data.collection
+            $scope.slides = response.data.slides;
           } else {
-            slides = response.data;
+            $scope.slides = response.data;
           }
-          $scope.slides = $sce.trustAsHtml(make_slides($scope, slides, collection));
           console.log($scope.slides);
       }, function error(response) {
+          $scope.slides = [];
           console.error(response);
       });
     }],
