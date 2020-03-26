@@ -58,7 +58,8 @@ function init_reveal() {
               //transition: Reveal.getQueryHash().transition || 'none',
             });
 }
-function insert_slides(elem,scope,slides,collection) { //should not have to pass scope, but something is going wrong when compile is run on the whole element
+function make_slides(scope,slides,collection) { //should not have to pass scope, but something is going wrong when compile is run on the whole element
+          var slides_container = angular.element("<div>");
           for (var i = 0; i < slides.length; i++) {
             var section = angular.element("<section>");
             var steps = slides[i];
@@ -88,7 +89,7 @@ function insert_slides(elem,scope,slides,collection) { //should not have to pass
               section.attr("data-markdown", '');
               section.attr("data-separator", '^---$');
               */
-              $compile(section)(scope);
+              //$compile(section)(scope);
             } else {
               console.log(steps.length);
               for (var j = 0; j < steps.length; j++) {
@@ -134,9 +135,9 @@ function insert_slides(elem,scope,slides,collection) { //should not have to pass
                 */
                 section.append(subSection);
               }
-              $compile(section)(scope);
+              //$compile(section)(scope);
             }
-            elem.append(section);
+            section_root.append(section);
           }
           //$compile(elem)(scope);
           if(Reveal.isReady()) {
@@ -144,6 +145,7 @@ function insert_slides(elem,scope,slides,collection) { //should not have to pass
           } else {
             init_reveal();
           }
+    return(slides_container);
 }
 var app = angular.module('slides', [
     'btford.socket-io',
@@ -204,19 +206,16 @@ app.config([ '$httpProvider' , function ($httpProvider) {
 */
 app.directive('slideshow', ['$compile', function($compile) {
   return {
-      /*
     scope: {
-      slides: '=slides'
+      slides: '@'
     },
-    */
+      template: '<ng-bind-html="slides"></ng-bind>';
       controller: ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $http, $routeParams) {
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
       $scope.deck = deck;
       //deck = $location.search().deck;
       console.log(deck);
-    }],
-    link: ["$http", function(scope, elem, attrs, $http) {
       $http({
         method: 'GET',
         url: "./decks/"+scope.deck+".json?raw=true"
@@ -228,13 +227,17 @@ app.directive('slideshow', ['$compile', function($compile) {
           } else {
             slides = response.data;
           }
-          insert_slides(elem, scope, slides, collection)
-          console.log(slides);
+          scope.slides = make_slides(scope, slides, collection)
+          console.log(scope.slides);
       }, function error(response) {
           console.error(response);
       });
+    }],
+      /*
+    link: ["$http", function(scope, elem, attrs, $http) {
       elem.addClass('slides');
     }]
+    */
   };
 }]);
 
