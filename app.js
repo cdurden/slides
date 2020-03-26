@@ -220,7 +220,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       slides: '@',
       collection: '@'
     },
-    template: '<ng-if="slides.length"><slides></slides></ng-if>',
+    template: '<div ng-if="slides.length"><slides></slides></div ng-if>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http, $sce) {
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
