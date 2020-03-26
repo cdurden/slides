@@ -103,16 +103,16 @@ app.directive('slideshow', ['$compile', function($compile) {
           url: "./decks/"+deck+".json?raw=true"
         }).then(function success(response) {
             console.log(response);
-            console.log($scope.slides);
+            var collection;
             if (typeof(response.data.collection) !== 'undefined') {
-              $scope.collection = response.data.collection;
+              collection = response.data.collection;
             }
-            names = response.data.slides;
+            var names = response.data.slides;
             var sections = [];
             for (var i=0;i<names.length;i++){
                 sections[i] = [];
                 for (var j=0;j<names[i].length;j++){
-                    sections[i][j] = {name: names[i][j], src: get_slide_src(names[i][j])}
+                    sections[i][j] = {name: names[i][j], src: get_slide_src(names[i][j],collection)}
                 }
             }
             $scope.sections = sections;

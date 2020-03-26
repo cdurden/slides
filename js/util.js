@@ -1,5 +1,5 @@
 function get_slide_src(slide, collection) {
-    var src;
+    var src = '';
     if (typeof(collection) !== 'undefined') {
         src = collection+"/"+slide;
     }
