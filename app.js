@@ -107,7 +107,8 @@ app.directive('slideshow', ['$compile', function($compile) {
             if (typeof(response.data.collection) !== 'undefined') {
               $scope.collection = response.data.collection;
             }
-            $scope.slides = response.data.slides.map(function(section) return section.map(function(slide) return get_slide_src(slide,collection)));
+            $scope.slides = response.data.slides
+            $scope.src = $scope.slides.map(function(section) {return section.map(function(slide) {return get_slide_src(slide,$scope.collection)})});
             console.log($scope.slides);
             //$compile(element)($scope);
         }, function error(response) {
