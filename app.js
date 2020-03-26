@@ -236,6 +236,7 @@ app.directive('slideshow', ['$compile', function($compile) {
             $scope.slides = response.data.slides;
           } else {
             $scope.slides = response.data;
+            console.log(scope.slides);
           }
           console.log($scope.slides);
       }, function error(response) {
