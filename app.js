@@ -87,11 +87,11 @@ app.directive('slideshow', ['$compile', function($compile) {
   return {
     bindToController: {
       sections: '@',
-      srca: '@',
+//      srca: '@',
       collection: '@'
     },
     replace: false,
-    template: '<ng-component ng-repeat="section in sections"><slides-section section="section" srcl="srca[$index]"></slides-section></ng-component>',
+    template: '<ng-component ng-repeat="section in sections"><slides-section section="section"></slides-section></ng-component>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
       console.log("slideshow controller");
       var hash_parts = $location.hash().split("/");
@@ -107,14 +107,21 @@ app.directive('slideshow', ['$compile', function($compile) {
             if (typeof(response.data.collection) !== 'undefined') {
               $scope.collection = response.data.collection;
             }
-            $scope.sections = response.data.slides;
-            $scope.srca = $scope.sections.map(function(section) {return section.map(function(slide) {return get_slide_src(slide,$scope.collection)})});
+            names = response.data.slides;
+            var sections = [];
+            for (var i=0;i<names.length;i++){
+                sections[i] = [];
+                for (var j=0;j<names[i].length;j++){
+                    sections[i][j] = {name: names[i][j], src: get_slide_src(names[i][j])}
+                }
+            }
+            $scope.sections = sections;
+            //$scope.srca = $scope.sections.map(function(section) {return section.map(function(slide) {return get_slide_src(slide,$scope.collection)})});
             console.log($scope.sections);
-            console.log($scope.srca);
-            //$compile(element)($scope);
+            //console.log($scope.srca);
         }, function error(response) {
             $scope.sections = [];
-            $scope.srca = [];
+            //$scope.srca = [];
             console.error(response);
         });
       },1000);
@@ -128,17 +135,17 @@ app.directive("slidesSection", function() {
   return {
     restrict: 'E',
     //templateUrl: './templates/section.html',
-    template: '<section ng-repeat="slide in section"><html-slide slide="slide" src="srcl[$index]"></html-slide></ng-init></section>',
+    template: '<section ng-repeat="slide in section"><html-slide slide="slide"></html-slide></ng-init></section>',
     replace: true,
     require: '^slideshow',
     scope: {
         section: '=',
-        srcl: '=srcl',
+        //srcl: '=srcl',
     },
     controller: ["$scope", function($scope) {
         console.log("slides-section directive called");
         console.log($scope.section);
-        console.log($scope.srcl);
+        //console.log($scope.srcl);
     }],
   };
 })
@@ -150,12 +157,12 @@ app.directive("htmlSlide", function() {
     require: '^slidesSection',
     scope: {
         slide: '=slide',
-        src: '=src'
+        //src: '=src'
     },
     controller: ["$scope", function($scope) {
         console.log("html slide directive called");
         console.log($scope.slide);
-        console.log($scope.src);
+        //console.log($scope.src);
     }],
   };
 })
@@ -167,7 +174,7 @@ app.directive("mdSlide", function() {
     require: '^slidesSection',
     scope: {
         slide: '=',
-        src: '='
+        //src: '='
     },
     controller: ["$scope", function($scope) {
         console.log("markdown slide directive called");
