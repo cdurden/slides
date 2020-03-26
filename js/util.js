@@ -1,7 +1,7 @@
 function get_slide_src(slide, collection) {
     var src;
-    if (typeof(scope.collection) !== 'undefined') {
-        src = scope.collection+"/"+slide;
+    if (typeof(collection) !== 'undefined') {
+        src = collection+"/"+slide;
     }
     if(slide.split('.').length === 1) {
         src = src+".html";
