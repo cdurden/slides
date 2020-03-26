@@ -1,5 +1,6 @@
 <div ng-repeat="section in slides" ng-init="i=$index">
-    <ng-if="section.length<2">
+    <ng-if="section.length==1">
+        single-part section
         {{i}}
         <section ng-if="src[i][0].split('.').pop()=='md'" id="{{section[0]}}" data-markdown data-separator="^---$">
             <script ng-ninclude="src[i][0]" type="text/template"></script>
