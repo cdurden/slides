@@ -4,7 +4,7 @@
         <section ng-if="src[i][0].split('.').pop()=='md'" id="{{section[0]}}" data-markdown data-separator="^---$">
             <script ng-ninclude="src[i][0]" type="text/template"></script>
         </section>
-        <section ng-if="src[i][0].split('.').pop()!='md'" id="{{section[0]}}" ng-include="src[i][0]">
+        <section ng-if="src[i][0].split('.').pop()!='md'" id="{{section[0]}}" ng-ninclude="src[i][0]">
         </section>
     </ng-if>
     <ng-if="section.length>1">
