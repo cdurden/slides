@@ -9,6 +9,7 @@ function get_slide_src(slide, collection) {
     if (steps[0].split('.').pop() === "md") {
         src = src+".md";
     }
+    return(src)
 }
 function update_snow_qm_task_data(data) {
   //container = document.getElementById('snow-qm_'+data.graph+"_"+data.task);
