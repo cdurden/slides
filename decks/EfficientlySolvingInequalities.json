@@ -2,8 +2,8 @@
 "collection": "EfficientlySolvingInequalities",
 "slides": 
  [
-    ["HereIsAnInequality1.md","MakeTable1.html","GraphTheInequality1.html"],
-    ["HereIsAnInequality2.md","MakeTable2.md","QuestionsAboutTheInequalityAndRelatedEquation2.md", "GraphTheInequality2.md"],
-    ["HereIsAnInequality3.md","MakeTable3.md","GraphTheInequality3.md"]
+    ["HereIsAnInequality1.html","MakeTable1.html","GraphTheInequality1.html"],
+    ["HereIsAnInequality2.html","MakeTable2.html","QuestionsAboutTheInequalityAndRelatedEquation2.html", "GraphTheInequality2.html"],
+    ["HereIsAnInequality3.html","MakeTable3.html","GraphTheInequality3.html"]
  ]
 }
