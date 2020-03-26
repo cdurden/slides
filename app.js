@@ -91,7 +91,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       collection: '@'
     },
     replace: false,
-    template: '<slides-section ng-repeat="section in sections" ng-init="src=src[$index]"></slides-section>',
+    template: '<slides-section ng-repeat="section in slides" ng-init="src=src[$index]"></slides-section>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
       console.log("slideshow controller");
       $scope.slides = [];
