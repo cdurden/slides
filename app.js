@@ -222,6 +222,8 @@ app.directive('slideshow', ['$compile', function($compile) {
     },
     template: '<div ng-if="slides.length"><slides></slides></div ng-if>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http, $sce) {
+    }],
+    link: ["$scope", "$location", "$http", function($scope, $location, $http, $sce) {
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
       $scope.deck = deck;
@@ -236,12 +238,13 @@ app.directive('slideshow', ['$compile', function($compile) {
           console.log($scope.slides);
           if (typeof(response.data.collection) !== 'undefined') {
             $scope.collection = response.data.collection;
-            setTimeout(function() {$scope.slides = response.data.slides;}, 50000);
+            $scope.slides = response.data.slides;
           } else {
-            setTimeout(function() {$scope.slides = response.data.slides;}, 50000);
+            $scope.slides = response.data.slides;
             //$scope.slides = response.data;
           }
           console.log($scope.slides);
+          $compile(element)($scope);
       }, function error(response) {
           $scope.slides = [];
           console.error(response);
