@@ -1,7 +1,7 @@
 <ng-repeat="section in slides">
     <ng-if="section.length">
         <ng-init="slide=section[0]">
-            <ng-init="src = get_slide_src(slide, collection)">
+            <ng-init="src=get_slide_src(slide, collection)">
                 {{slide}}: {{src}}
                 <section ng-if="src.split('.').pop()==='md'" id="{{src}}" data-markdown data-separator="^---$"><script ng-include="'./slides/'+src" type="text/template"></script></section>
                     <section ng-if="src.split('.').pop()!=='md'" id="{{src}}"><script ng-include="'./slides/'+src" type="text/template"></script></section>
@@ -11,7 +11,7 @@
     </ng-if>
     <ng-if="section.length">
         <ng-repeat="slide in section">
-            <ng-init="src = get_slide_src(slide, collection)">
+            <ng-init="src=get_slide_src(slide, collection)">
                 {{slide}}: {{src}}
                 <section ng-if="src.split('.').pop()==='md'" id="{{src}}" data-markdown data-separator="^---$"><script ng-include="'./slides/'+src" type="text/template"></script></section>
                     <section ng-if="src.split('.').pop()!=='md'" id="{{src}}"><script ng-include="'./slides/'+src" type="text/template"></script></section>
