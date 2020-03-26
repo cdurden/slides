@@ -202,8 +202,10 @@ app.directive("slides", function() {
   return {
     templateUrl: './templates/slides.html',
     scope: true,
-    controller: function() {
-    },
+    controller: ["$scope", function($scope) {
+        console.log("slides directive called");
+        console.log($scope.slides);
+    }],
   };
 })
 /*
