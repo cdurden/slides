@@ -128,6 +128,7 @@ app.directive('slideshow', ['$compile', function($compile) {
 app.directive("slidesSection", function() {
   return {
     templateUrl: './templates/section.html',
+    restrict: 'E',
     replace: true,
     require: '^slideshow',
     scope: {
@@ -144,6 +145,7 @@ app.directive("slidesSection", function() {
 app.directive("htmlSlide", function() {
   return {
     templateUrl: './templates/html-slide.html',
+    restrict: 'E',
     replace: true,
     require: '^slidesSection',
     scope: {
@@ -160,6 +162,7 @@ app.directive("htmlSlide", function() {
 app.directive("mdSlide", function() {
   return {
     templateUrl: './templates/md-slide.html',
+    restrict: 'E',
     replace: true,
     require: '^slidesSection',
     scope: {
