@@ -125,6 +125,7 @@ app.directive('slideshow', ['$compile', function($compile) {
 app.directive("slides", function() {
   return {
     templateUrl: './templates/slides.html',
+    require: '^slideshow',
     scope: true,
     controller: ["$scope", function($scope) {
         console.log("slides directive called");
