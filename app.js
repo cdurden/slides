@@ -225,7 +225,7 @@ app.directive('slideshow', ['$compile', function($compile) {
         $scope.slides = [];
         console.log("slideshow controller");
     }],
-    link: ["$scope", "$location", "$http", function($scope, $location, $http, $sce) {
+    link: ["$location", function(scope, elem, attr, $location) {
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
       $scope.deck = deck;
