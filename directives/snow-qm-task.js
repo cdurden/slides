@@ -57,7 +57,7 @@ angular.module('slides')
           Sockets.emit('form_submit', data=getFormData( $(this) ));
           e.preventDefault(); // block the traditional submission of the form.
         });
-      }
+      });
     }
   }
 }]);
