@@ -58,6 +58,93 @@ function init_reveal() {
               //transition: Reveal.getQueryHash().transition || 'none',
             });
 }
+add_slides function(elem,scope,slides,collection) { //should not have to pass scope, but something is going wrong when compile is run on the whole element
+          for (var i = 0; i < slides.length; i++) {
+            var section = angular.element("<section>");
+            var steps = slides[i];
+    
+            if (steps.length == 1) {
+              if (typeof(scope.collection) !== 'undefined') {
+                  steps[0] = collection+"/"+steps[0];
+              }
+              if (steps[0].split('.').length == 1) {
+                  steps[0] = steps[0]+".html";
+              }
+              if (steps[0].split('.').pop() === "md") {
+                section.attr("id", steps[0]);
+                section.attr("data-markdown", '');
+                section.attr("data-separator", '^---$');
+                script = angular.element("<script>");
+                script.attr('type', 'text/template');
+                script.attr('ng-include', "'./slides/"+steps[0]+"'");
+                section.append(script);
+              } else {
+                section.attr('ng-include', "'./slides/"+steps[0]+"'");
+                section.attr("id", steps[0]);
+              }
+                  /*
+              section.attr('ng-include', "'./slides/"+steps[0]+".html?raw=true'");
+              section.attr("id", steps[0]);
+              section.attr("data-markdown", '');
+              section.attr("data-separator", '^---$');
+              */
+              $compile(section)(scope);
+            } else {
+              console.log(steps.length);
+              for (var j = 0; j < steps.length; j++) {
+                var subSection = angular.element("<section>");
+                if (typeof(collection) !== 'undefined') {
+                    steps[j] = collection+"/"+steps[j];
+                }
+                if (steps[j].split('.').length == 1) {
+                    steps[j] = steps[j]+".html";
+                }
+                if (steps[j].split('.').pop() === "md") {
+                  subSection.attr("id", steps[j]);
+                  subSection.attr("data-markdown", '');
+                  subSection.attr("data-separator", '^---$');
+                  div = angular.element("<div>");
+                  div.attr('ng-include', "'./slides/"+steps[j]+"'");
+                  script = angular.element("<script>");
+                  script.attr('type', 'text/template');
+                  //script.attr('ng-include', "'./slides/"+steps[j]+"'");
+                    /*
+                  script.attr('ng-include','');
+                  script.attr('src', "'./slides/"+steps[j]+"'");
+                  */
+                  //script.attr('src', "./slides/"+steps[j]);
+                  /*
+                  script_data = angular.element("<ng-include>");
+                  script.attr('ng-include','');
+                  */
+                  //subSection.append(script);
+                  div.append(script);
+                  subSection.append(div);
+                } else {
+                  subSection.attr('ng-include', "'./slides/"+steps[j]+"'");
+                  subSection.attr("id", steps[j]);
+                }
+                //if (j < steps.length - 1)
+                //  subSection.attr('data-autoslide', '1000');
+                  /*
+                subSection.attr("data-markdown", '');
+                subSection.attr("data-separator", '^---$');
+                subSection.attr("ng-include", "'./slides/"+steps[j]+".html?raw=true'");
+                subSection.attr("id", steps[j]);
+                */
+                section.append(subSection);
+              }
+              $compile(section)(scope);
+            }
+            elem.append(section);
+          }
+          //$compile(elem)(scope);
+          if(Reveal.isReady()) {
+            Reveal.sync();
+          } else {
+            init_reveal();
+          }
+}
 var app = angular.module('slides', [
     'btford.socket-io',
     'slides.services.sockets',
@@ -123,120 +210,30 @@ app.directive('slideshow', ['$compile', function($compile) {
     },
     */
       controller: ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $http, $routeParams) {
-      $scope.slides = [];
-      hash_parts = $location.hash().split("/");
-      deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
+      var hash_parts = $location.hash().split("/");
+      var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
+      $scope.deck = deck;
       //deck = $location.search().deck;
       console.log(deck);
+    }],
+    link: function(scope, elem, attrs) {
       $http({
         method: 'GET',
-        url: "./decks/"+deck+".json?raw=true"
+        url: "./decks/"+scope.deck+".json?raw=true"
       }).then(function success(response) {
           console.log(response);
           if (typeof(response.data.collection) !== 'undefined') {
-            $scope.collection = response.data.collection
-            $scope.slides = response.data.slides;
+            collection = response.data.collection
+            slides = response.data.slides;
           } else {
-            $scope.slides = response.data;
+            slides = response.data;
           }
-          console.log($scope.slides);
+          add_slides(elem, scope, slides, collection)
+          console.log(slides);
       }, function error(response) {
           console.error(response);
       });
-    }],
-    link: function(scope, elem, attrs) {
       elem.addClass('slides');
-      scope.$watch('slides', function(slides) {
-        console.log(slides);
-        if (slides.length) {
-          console.log("updating slides");
-          for (var i = 0; i < scope.slides.length; i++) {
-            var section = angular.element("<section>");
-            var steps = scope.slides[i];
-    
-            if (steps.length == 1) {
-              if (typeof(scope.collection) !== 'undefined') {
-                  steps[0] = scope.collection+"/"+steps[0];
-              }
-              if (steps[0].split('.').length == 1) {
-                  steps[0] = steps[0]+".html";
-              }
-              if (steps[0].split('.').pop() === "md") {
-                section.attr("id", steps[0]);
-                section.attr("data-markdown", '');
-                section.attr("data-separator", '^---$');
-                script = angular.element("<script>");
-                script.attr('type', 'text/template');
-                script.attr('ng-include', "'./slides/"+steps[0]+"'");
-                section.append(script);
-              } else {
-                section.attr('ng-include', "'./slides/"+steps[0]+"'");
-                section.attr("id", steps[0]);
-              }
-                  /*
-              section.attr('ng-include', "'./slides/"+steps[0]+".html?raw=true'");
-              section.attr("id", steps[0]);
-              section.attr("data-markdown", '');
-              section.attr("data-separator", '^---$');
-              */
-              $compile(section)(scope);
-            } else {
-              console.log(steps.length);
-              for (var j = 0; j < steps.length; j++) {
-                var subSection = angular.element("<section>");
-                if (typeof(scope.collection) !== 'undefined') {
-                    steps[j] = scope.collection+"/"+steps[j];
-                }
-                if (steps[j].split('.').length == 1) {
-                    steps[j] = steps[j]+".html";
-                }
-                if (steps[j].split('.').pop() === "md") {
-                  subSection.attr("id", steps[j]);
-                  subSection.attr("data-markdown", '');
-                  subSection.attr("data-separator", '^---$');
-                  div = angular.element("<div>");
-                  div.attr('ng-include', "'./slides/"+steps[j]+"'");
-                  script = angular.element("<script>");
-                  script.attr('type', 'text/template');
-                  //script.attr('ng-include', "'./slides/"+steps[j]+"'");
-                    /*
-                  script.attr('ng-include','');
-                  script.attr('src', "'./slides/"+steps[j]+"'");
-                  */
-                  //script.attr('src', "./slides/"+steps[j]);
-                  /*
-                  script_data = angular.element("<ng-include>");
-                  script.attr('ng-include','');
-                  */
-                  //subSection.append(script);
-                  div.append(script);
-                  subSection.append(div);
-                } else {
-                  subSection.attr('ng-include', "'./slides/"+steps[j]+"'");
-                  subSection.attr("id", steps[j]);
-                }
-                //if (j < steps.length - 1)
-                //  subSection.attr('data-autoslide', '1000');
-                  /*
-                subSection.attr("data-markdown", '');
-                subSection.attr("data-separator", '^---$');
-                subSection.attr("ng-include", "'./slides/"+steps[j]+".html?raw=true'");
-                subSection.attr("id", steps[j]);
-                */
-                section.append(subSection);
-              }
-              $compile(section)(scope);
-            }
-            elem.append(section);
-          }
-          //$compile(elem)(scope);
-          if(Reveal.isReady()) {
-            Reveal.sync();
-          } else {
-            init_reveal();
-          }
-        }
-      });
     }
   };
 }]);
