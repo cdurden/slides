@@ -11,7 +11,7 @@ angular.module('slides')
         console.log(attrs);
         return(attrs.id);
     },*/
-    scope: { collection: '=', task: '=' },
+    scope: { collection: '=', task: '=', task_view: '=' },
     bindToController: { collection: '@', task: '@' },
     controller: ["$scope","$element","$sce", function ($scope, $element, $sce) {
       Sockets.on('submission_confirmation', function (data) {
@@ -32,15 +32,13 @@ angular.module('slides')
           console.log("injecting  questions");
           clearTimer();
           Sockets.on('snow_qm_task_data', function (data) {
-            update_snow_qm_task_data(data);
-              /*
             console.log(data);
             if(data['collection']==collection && data['task']==task) {
               console.log("got task");
-              //$scope.task = $sce.trustAsHtml(data.html);
-              $($element).html(data.html);
+              //update_snow_qm_task_data(data);
+              $scope.task_view = $sce.trustAsHtml(data.html);
+              //$($element).html(data.html);
             }
-            */
           });
           console.log("getting snow-qm task");
           console.log(collection);
@@ -54,10 +52,12 @@ angular.module('slides')
     }],
     link: function (scope, element, attrs, ctrls) {
 //      var taskCtrl = ctrls[0];
-      $(element).find("form").on("submit", function (e) {
-        Sockets.emit('form_submit', data=getFormData( $(this) ));
-        e.preventDefault(); // block the traditional submission of the form.
-    });
+      scope.$watch("task_view", function() {
+        $(element).find("form").on("submit", function (e) {
+          Sockets.emit('form_submit', data=getFormData( $(this) ));
+          e.preventDefault(); // block the traditional submission of the form.
+        });
+      }
     }
   }
 }]);
