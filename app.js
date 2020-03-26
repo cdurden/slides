@@ -64,6 +64,7 @@ var app = angular.module('slides', [
     'ngRoute',
 ]);
 app.controller("myctrl", ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $http, $routeParams) {
+    console.log("main controller");
     //do nothing
 }]);
 app.config([ '$locationProvider' , function ($locationProvider) {
