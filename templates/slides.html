@@ -15,7 +15,7 @@
         <ng-repeat="slide in section" ng-init="j=$index">
             {{slide}}: {{src[i][j]}}
             <section ng-if="src[i][j].split('.').pop()=='md'" id="{{slide}}" data-markdown data-separator="^---$"><script ng-include="src[i][j]" type="text/template"></script></section>
-            <section ng-if="src[i][j].split('.').pop()!='md'" id="{{slide}}"></script></section>
+            <section ng-if="src[i][j].split('.').pop()!='md'" id="{{slide}}"></section>
         </ng-repeat>
     </section>
 </div>
