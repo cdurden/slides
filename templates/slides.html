@@ -4,11 +4,11 @@
         <section ng-if="src[i][0].split('.').pop()==='md'" id="{{section[0]}}" data-markdown data-separator="^---$"><script ng-include="src[i][0]" type="text/template"></script></section>
         <section ng-if="src[i][0].split('.').pop()!=='md'" id="{{section[0]}}"><script ng-include="src[i][0]" type="text/template"></script></section>
     </ng-if>
-    <ng-if="section.length>=2">
+    <section *ngIf="section.length>=2">
         <ng-repeat="slide in section" ng-init="j=$index">
             {{slide}}: {{src[i][j]}}
             <section ng-if="src[i][j].split('.').pop()==='md'" id="{{slide}}" data-markdown data-separator="^---$"><script ng-include="src[i][j]" type="text/template"></script></section>
             <section ng-if="src[i][j].split('.').pop()!=='md'" id="{{slide}}"><script ng-include="src[i][j]" type="text/template"></script></section>
         </ng-repeat>
-    </ng-if>
+    </section>
 </div>
