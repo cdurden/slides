@@ -127,6 +127,7 @@ app.directive('slideshow', ['$compile', function($compile) {
 app.directive("slides", function() {
   return {
     templateUrl: './templates/slides.html',
+    replace: true,
     require: '^slideshow',
     scope: true,
     controller: ["$scope", function($scope) {
