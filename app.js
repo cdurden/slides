@@ -91,7 +91,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       collection: '@'
     },
     replace: true,
-    template: '<slide-section ng-replace="section in sections"></slide-section>',
+    template: '<slide-section ng-repeat="section in sections" ng-init="src=src[$index]"></slide-section>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
       console.log("slideshow controller");
       $scope.slides = [];
@@ -129,11 +129,11 @@ app.directive("slidesSection", function() {
   return {
     templateUrl: './templates/section.html',
     replace: true,
-    scope: { section='@'},
+    require: '^slideshow',
+    scope: true,
     controller: ["$scope", function($scope) {
         console.log("slides-section directive called");
-        console.log($scope.slides);
-        console.log($scope.collection);
+        console.log($scope.section);
     }],
   };
 })
@@ -145,8 +145,7 @@ app.directive("slide", function() {
     scope: true,
     controller: ["$scope", function($scope) {
         console.log("slide directive called");
-        console.log($scope.slides);
-        console.log($scope.collection);
+        console.log($scope.slide);
     }],
   };
 })
