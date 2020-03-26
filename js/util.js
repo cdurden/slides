@@ -6,7 +6,7 @@ function get_slide_src(slide, collection) {
     if(slide.split('.').length === 1) {
         src = src+".html";
     }
-    if (steps[0].split('.').pop() === "md") {
+    if (slide.split('.').pop() === "md") {
         src = src+".md";
     }
     return("./slides/"+src)
