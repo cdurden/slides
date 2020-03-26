@@ -133,7 +133,7 @@ app.directive("slidesSection", function() {
     scope: { section='@'},
     controller: ["$scope", function($scope) {
         $scope.section = 
-        console.log("slides directive called");
+        console.log("slides-section directive called");
         console.log($scope.slides);
         console.log($scope.collection);
     }],
@@ -146,7 +146,7 @@ app.directive("slide", function() {
     require: '^slidesSection',
     scope: true,
     controller: ["$scope", function($scope) {
-        console.log("slides directive called");
+        console.log("slide directive called");
         console.log($scope.slides);
         console.log($scope.collection);
     }],
