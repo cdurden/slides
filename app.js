@@ -91,7 +91,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       collection: '@'
     },
     replace: false,
-    template: '<slides-section ng-repeat="section in sections" ng-init="src=src[$index]"></slides-section>',
+    template: '<slides-section ng-repeat="section in sections" section="section" src="src[$index]"></slides-section>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
       console.log("slideshow controller");
       $scope.slides = [];
@@ -130,7 +130,10 @@ app.directive("slidesSection", function() {
     templateUrl: './templates/section.html',
     replace: true,
     require: '^slideshow',
-    scope: true,
+    scope: {
+        section: '=',
+        src: '=',
+    },
     controller: ["$scope", function($scope) {
         console.log("slides-section directive called");
         console.log($scope.section);
@@ -143,7 +146,10 @@ app.directive("htmlSlide", function() {
     templateUrl: './templates/html-slide.html',
     replace: true,
     require: '^slidesSection',
-    scope: true,
+    scope: {
+        slide: '=',
+        src: '='
+    },
     controller: ["$scope", function($scope) {
         console.log("html slide directive called");
         console.log($scope.slide);
@@ -156,7 +162,10 @@ app.directive("mdSlide", function() {
     templateUrl: './templates/md-slide.html',
     replace: true,
     require: '^slidesSection',
-    scope: true,
+    scope: {
+        slide: '=',
+        src: '='
+    },
     controller: ["$scope", function($scope) {
         console.log("markdown slide directive called");
         console.log($scope.slide);
