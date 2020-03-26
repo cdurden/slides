@@ -117,7 +117,7 @@ app.directive('slideshow', ['$compile', function($compile) {
             $scope.slides = [];
             console.error(response);
         });
-      },5000);
+      },1000);
     }],
     link: ["$location", function(scope, elem, attr, $location) {
       //elem.addClass('slides');
