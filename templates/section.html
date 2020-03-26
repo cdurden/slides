@@ -1,1 +1,1 @@
-<section ng-repeat="slide in section" ng-init="src=src[$index]">{{slide}}:{{src}}<markdown-slide ng-if="src.split('.').pop()=='md'"></markdown-slide><html-slide ng-if="src.split('.').pop()!='md'"></html-slide></section>
+<section ng-repeat="slide in section" ng-init="src=src[$index]"><markdown-slide ng-if="src.split('.').pop()=='md'"></markdown-slide><html-slide ng-if="src.split('.').pop()!='md'"></html-slide></section>

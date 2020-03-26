@@ -90,7 +90,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       src: '@',
       collection: '@'
     },
-    replace: true,
+    replace: false,
     template: '<slides-section ng-repeat="section in sections" ng-init="src=src[$index]"></slides-section>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
       console.log("slideshow controller");
@@ -128,7 +128,7 @@ app.directive('slideshow', ['$compile', function($compile) {
 app.directive("slidesSection", function() {
   return {
     templateUrl: './templates/section.html',
-    replace: false,
+    replace: true,
     require: '^slideshow',
     scope: true,
     controller: ["$scope", function($scope) {
