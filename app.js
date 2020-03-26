@@ -198,6 +198,14 @@ app.directive("myInclude", function() {
     template: "<div ng-include='myInclude||src'></div><div ng-show='loadFailed' ng-transclude/>"
   };
 })
+app.directive("slides", function() {
+  return {
+    templateUrl: './templates/slides.html',
+    scope: true,
+    controller: function() {
+    },
+  };
+})
 /*
 app.config([ '$httpProvider' , function ($httpProvider) {
   $httpProvider.defaults.useXDomain = true ;
@@ -210,7 +218,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       slides: '@',
       collection: '@'
     },
-      templateUrl: './templates/slides.html',
+      template: '<ng-if="slides.length"><slides></slides></ng-if>'
       //controller: ["$scope", "$location", "$http", function($scope, $location, $http, $sce) {
     //}],
     link: ["$scope", "$location", "$http", function(scope, elem, attrs, $http) {
