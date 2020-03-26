@@ -137,7 +137,7 @@ function make_slides(scope,slides,collection) { //should not have to pass scope,
               }
               //$compile(section)(scope);
             }
-            section_root.append(section);
+            slides_container.append(section);
           }
           //$compile(elem)(scope);
           if(Reveal.isReady()) {
