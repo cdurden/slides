@@ -58,7 +58,7 @@ function init_reveal() {
               //transition: Reveal.getQueryHash().transition || 'none',
             });
 }
-function add_slides(elem,scope,slides,collection) { //should not have to pass scope, but something is going wrong when compile is run on the whole element
+function insert_slides(elem,scope,slides,collection) { //should not have to pass scope, but something is going wrong when compile is run on the whole element
           for (var i = 0; i < slides.length; i++) {
             var section = angular.element("<section>");
             var steps = slides[i];
@@ -228,7 +228,7 @@ app.directive('slideshow', ['$compile', function($compile) {
           } else {
             slides = response.data;
           }
-          add_slides(elem, scope, slides, collection)
+          insert_slides(elem, scope, slides, collection)
           console.log(slides);
       }, function error(response) {
           console.error(response);
