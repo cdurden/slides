@@ -87,6 +87,7 @@ app.directive('slideshow', ['$compile', function($compile) {
   return {
     bindToController: {
       slides: '@',
+      src: '@',
       collection: '@'
     },
     template: '<div ng-if="slides.length"><slides></slides></div ng-if>',
@@ -107,9 +108,10 @@ app.directive('slideshow', ['$compile', function($compile) {
             if (typeof(response.data.collection) !== 'undefined') {
               $scope.collection = response.data.collection;
             }
-            $scope.slides = response.data.slides
+            $scope.slides = response.data.slides;
             $scope.src = $scope.slides.map(function(section) {return section.map(function(slide) {return get_slide_src(slide,$scope.collection)})});
             console.log($scope.slides);
+            console.log($scope.src);
             //$compile(element)($scope);
         }, function error(response) {
             $scope.slides = [];
