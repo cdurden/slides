@@ -97,25 +97,27 @@ app.directive('slideshow', ['$compile', function($compile) {
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
       $scope.deck = deck;
       console.log(deck);
-      $http({
-        method: 'GET',
-        url: "./decks/"+$scope.deck+".json?raw=true"
-      }).then(function success(response) {
-          console.log(response);
-          console.log($scope.slides);
-          if (typeof(response.data.collection) !== 'undefined') {
-            $scope.collection = response.data.collection;
-            $scope.slides = response.data.slides;
-          } else {
-            $scope.slides = response.data.slides;
-            //$scope.slides = response.data;
-          }
-          console.log($scope.slides);
-          //$compile(element)($scope);
-      }, function error(response) {
-          $scope.slides = [];
-          console.error(response);
-      });
+      setTimeout(function() {
+        $http({
+          method: 'GET',
+          url: "./decks/"+$scope.deck+".json?raw=true"
+        }).then(function success(response) {
+            console.log(response);
+            console.log($scope.slides);
+            if (typeof(response.data.collection) !== 'undefined') {
+              $scope.collection = response.data.collection;
+              $scope.slides = response.data.slides;
+            } else {
+              $scope.slides = response.data.slides;
+              //$scope.slides = response.data;
+            }
+            console.log($scope.slides);
+            //$compile(element)($scope);
+        }, function error(response) {
+            $scope.slides = [];
+            console.error(response);
+        });
+      },5000);
     }],
     link: ["$location", function(scope, elem, attr, $location) {
       //elem.addClass('slides');
