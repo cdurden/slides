@@ -1,6 +1,1 @@
-<ng-container ng-if="section.length == 1">
-    <slide ng-init="slide=section[0]"></slide>
-</ng-container>
-<ng-container ng-if="section.length > 1">
-    <section ng-repeat="slide in section" ng-init="src=src[$index]"><slide></slide></section>
-</ng-container>
+<section ng-repeat="slide in slides"><markdown-slide ng-if="src.split('.').pop()=='md'"></markdown-slide><html-slide ng-if="src.split('.').pop()!='md'"></html-slide></section>

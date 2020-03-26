@@ -128,7 +128,7 @@ app.directive('slideshow', ['$compile', function($compile) {
 app.directive("slidesSection", function() {
   return {
     templateUrl: './templates/section.html',
-    replace: true,
+    replace: false,
     require: '^slideshow',
     scope: true,
     controller: ["$scope", function($scope) {
@@ -137,14 +137,26 @@ app.directive("slidesSection", function() {
     }],
   };
 })
-app.directive("slide", function() {
+app.directive("htmlSlide", function() {
   return {
-    templateUrl: './templates/slide.html',
+    templateUrl: './templates/html-slide.html',
     replace: true,
     require: '^slidesSection',
     scope: true,
     controller: ["$scope", function($scope) {
-        console.log("slide directive called");
+        console.log("html slide directive called");
+        console.log($scope.slide);
+    }],
+  };
+})
+app.directive("mdSlide", function() {
+  return {
+    templateUrl: './templates/md-slide.html',
+    replace: true,
+    require: '^slidesSection',
+    scope: true,
+    controller: ["$scope", function($scope) {
+        console.log("markdown slide directive called");
         console.log($scope.slide);
     }],
   };
