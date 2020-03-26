@@ -91,7 +91,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       collection: '@'
     },
     replace: true,
-    template: '<div class="slides" ng-if="slides.length"><slides></slides></div ng-if>',
+    template: '<slide-section ng-replace="section in sections"></slide-section>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
       console.log("slideshow controller");
       $scope.slides = [];
@@ -129,10 +129,8 @@ app.directive("slidesSection", function() {
   return {
     templateUrl: './templates/section.html',
     replace: true,
-    require: '^slideshow',
     scope: { section='@'},
     controller: ["$scope", function($scope) {
-        $scope.section = 
         console.log("slides-section directive called");
         console.log($scope.slides);
         console.log($scope.collection);
