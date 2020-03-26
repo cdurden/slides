@@ -233,7 +233,7 @@ app.directive('slideshow', ['$compile', function($compile) {
           console.log(response);
           console.log($scope.slides);
           if (typeof(response.data.collection) !== 'undefined') {
-            $scope.collection = response.data.collection
+            $scope.collection = response.data.collection;
             setTimeout(function($scope.slides = response.data.slides;) {}, 50000);
           } else {
             setTimeout(function($scope.slides = response.data.slides;) {}, 50000);
