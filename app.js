@@ -86,11 +86,12 @@ app.config([ '$httpProvider' , function ($httpProvider) {
 app.directive('slideshow', ['$compile', function($compile) {
   return {
     bindToController: {
-      slides: '@',
+      sections: '@',
       src: '@',
       collection: '@'
     },
-    template: '<div ng-if="slides.length"><slides></slides></div ng-if>',
+    replace: true,
+    template: '<div class="slides" ng-if="slides.length"><slides></slides></div ng-if>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
       console.log("slideshow controller");
       $scope.slides = [];
@@ -108,9 +109,9 @@ app.directive('slideshow', ['$compile', function($compile) {
             if (typeof(response.data.collection) !== 'undefined') {
               $scope.collection = response.data.collection;
             }
-            $scope.slides = response.data.slides;
-            $scope.src = $scope.slides.map(function(section) {return section.map(function(slide) {return get_slide_src(slide,$scope.collection)})});
-            console.log($scope.slides);
+            $scope.sections = response.data.slides;
+            $scope.src = $scope.sections.map(function(section) {return section.map(function(slide) {return get_slide_src(slide,$scope.collection)})});
+            console.log($scope.sections);
             console.log($scope.src);
             //$compile(element)($scope);
         }, function error(response) {
@@ -124,11 +125,25 @@ app.directive('slideshow', ['$compile', function($compile) {
     }],
   };
 }]);
-app.directive("slides", function() {
+app.directive("slidesSection", function() {
   return {
-    templateUrl: './templates/slides.html',
+    templateUrl: './templates/section.html',
     replace: true,
     require: '^slideshow',
+    scope: { section='@'},
+    controller: ["$scope", function($scope) {
+        $scope.section = 
+        console.log("slides directive called");
+        console.log($scope.slides);
+        console.log($scope.collection);
+    }],
+  };
+})
+app.directive("slide", function() {
+  return {
+    templateUrl: './templates/slide.html',
+    replace: true,
+    require: '^slidesSection',
     scope: true,
     controller: ["$scope", function($scope) {
         console.log("slides directive called");

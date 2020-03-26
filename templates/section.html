@@ -1,0 +1,6 @@
+<ng-container ng-if="section.length == 1">
+    <slide ng-init="slide=section[0]"></slide>
+</ng-container>
+<ng-container ng-if="section.length > 1">
+    <section ng-repeat="slide in section"><slide></slide></section>
+</ng-container>
