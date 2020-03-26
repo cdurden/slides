@@ -2,6 +2,4 @@ Here is an inequality:
 
 $$\text-x \geq \text-4.$$
 
-Are you ready to graph the solution on a number line? If so, click <a target="_self" href="#GraphTheInequality1">here</a>.
-
-Otherwise, click <a target="_self" href="#MakeTable1">here</a>.
+Swipe down to investigate this inequality.
