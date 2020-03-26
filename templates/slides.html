@@ -13,8 +13,7 @@
         multipart section
         {{section.length}}
         {{section[0]}}
-        <div ng-repeat "slide in section" ng-init="j=$index">
-            {{i}} {{j}}
+        <div ng-repeat="slide in section" ng-init="j=$index">
             <section ng-if="src[i][j].split('.').pop()=='md'" id="{{slide}}" data-markdown data-separator="^---$"><script ng-include="src[i][j]" type="text/template"></script></section>
             <section ng-if="src[i][j].split('.').pop()!='md'" id="{{slide}}" ng-include="src[i][j]"></section>
         </div>
