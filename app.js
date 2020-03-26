@@ -223,6 +223,7 @@ app.directive('slideshow', ['$compile', function($compile) {
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
       $scope.deck = deck;
+      $scope.slides = [];
       //deck = $location.search().deck;
       console.log(deck);
       $http({
