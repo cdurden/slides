@@ -1,10 +1,6 @@
-<script type="text/template">
-Here is an inequality: 
+Here is our third inequality: 
 
 $$2x<6$$
 
-2. Complete the table. Does it match your prediction?
-{{ digraph_question('ch5', 'q21') }}
-
-</script>
-
+Complete the table. Does it match your prediction?
+<div snow-qm-task collection="inequalities" task="q21"></div>

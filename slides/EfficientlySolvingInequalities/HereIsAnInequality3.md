@@ -1,9 +1,7 @@
-<script type="text/template">
-Here is an inequality: 
+Here is a third inequality! 
 
 $$2x<6$$
 
-1. Predict which values of $x$ will make the inequality $2x < 6$ true.
-
-</script>
+<!--Predict which values of $x$ will make the inequality $2x < 6$ true.-->
+<div snow-qm-task collection="inequalities" task="q25"></div>
 

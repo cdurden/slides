@@ -1,4 +1,2 @@
-<script type="text/template">
-Let's investigate the inequality $x-3>\text-2.$
-{{ digraph_question('ch5', 'q20') }}
-</script>
+<!--Graph the solutions to $x - 3 > \text-2$ on the number line:-->
+ 3. <div snow-qm-task collection="inequalities" task="q24"></div>

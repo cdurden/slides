@@ -1,9 +1,10 @@
-<script type="text/template">
+Use the table that you made to answer each question in complete sentences.
 <div class="lower_alpha"></div>
-
- 1. Complete the table.
- 2. For which values of $x$ is it true that $x - 3 = \text-2$?
- 3. For which values of $x$ is it true that $x - 3 > \text-2$?
- 4. Graph the solutions to $x - 3 > \text-2$ on the number line:
-![Blank number line](/static/images/NumberLineNoLabels.png)<!-- .element: class="noborder" -->
-</script>
+<!--For which values of $x$ is it true that $x - 3 = \text-2$?-->
+ 1. <div snow-qm-task collection="inequalities" task="q22"></div>
+<!--For which values of $x$ is it true that $x - 3 > \text-2$?-->
+ 2. <div snow-qm-task collection="inequalities" task="q23"></div>
+<!--Graph the solutions to $x - 3 > \text-2$ on the number line:-->
+<!--
+ 3. <div snow-qm-task collection="inequalities" task="q24"></div>
+-->
