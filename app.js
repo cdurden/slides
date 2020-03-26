@@ -149,8 +149,8 @@ app.directive("htmlSlide", function() {
     replace: true,
     require: '^slidesSection',
     scope: {
-        slide: '=',
-        src: '='
+        slide: '=slide',
+        src: '=src'
     },
     controller: ["$scope", function($scope) {
         console.log("html slide directive called");
