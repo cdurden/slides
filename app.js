@@ -58,7 +58,7 @@ function init_reveal() {
               //transition: Reveal.getQueryHash().transition || 'none',
             });
 }
-add_slides function(elem,scope,slides,collection) { //should not have to pass scope, but something is going wrong when compile is run on the whole element
+function add_slides(elem,scope,slides,collection) { //should not have to pass scope, but something is going wrong when compile is run on the whole element
           for (var i = 0; i < slides.length; i++) {
             var section = angular.element("<section>");
             var steps = slides[i];
