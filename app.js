@@ -134,6 +134,7 @@ app.directive("slidesSection", function() {
     controller: ["$scope", function($scope) {
         console.log("slides-section directive called");
         console.log($scope.section);
+        console.log($scope.src);
     }],
   };
 })
@@ -146,6 +147,7 @@ app.directive("htmlSlide", function() {
     controller: ["$scope", function($scope) {
         console.log("html slide directive called");
         console.log($scope.slide);
+        console.log($scope.src);
     }],
   };
 })
@@ -158,6 +160,7 @@ app.directive("mdSlide", function() {
     controller: ["$scope", function($scope) {
         console.log("markdown slide directive called");
         console.log($scope.slide);
+        console.log($scope.src);
     }],
   };
 })
