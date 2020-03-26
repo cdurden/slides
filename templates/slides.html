@@ -1,5 +1,5 @@
 <div ng-repeat="section in slides" ng-init="i=$index">
-    <ng-container *ng-if="section.length == 1">
+    <ng-container ng-if="section.length == 1">
         {{section.length}}
         single-part section
         {{i}}
