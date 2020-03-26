@@ -11,8 +11,8 @@ angular.module('slides')
         console.log(attrs);
         return(attrs.id);
     },*/
-    scope: { collection: '=', task: '=', task_view: '=' },
-    bindToController: { collection: '@', task: '@' },
+    //scope: { collection: '=', task: '=', task_view: '@' },
+    bindToController: { collection: '@', task: '@', task_view: '@'},
     controller: ["$scope","$element","$sce", function ($scope, $element, $sce) {
       Sockets.on('submission_confirmation', function (data) {
         console.log(data);
