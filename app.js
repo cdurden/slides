@@ -227,7 +227,7 @@ app.directive('slideshow', ['$compile', function($compile) {
           } else {
             slides = response.data;
           }
-          $scope.slides = make_slides($scope, slides, collection)
+          $scope.slides = $sce.trustAsHtml(make_slides($scope, slides, collection));
           console.log($scope.slides);
       }, function error(response) {
           console.error(response);
