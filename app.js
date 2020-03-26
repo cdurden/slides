@@ -237,7 +237,7 @@ app.directive('slideshow', ['$compile', function($compile) {
           } else {
             $scope.slides = response.data;
           }
-          setTimeout(10000);
+          setTimeout(50000);
           console.log($scope.slides);
       }, function error(response) {
           $scope.slides = [];
