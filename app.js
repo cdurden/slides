@@ -222,6 +222,7 @@ app.directive('slideshow', ['$compile', function($compile) {
     },
     template: '<div ng-if="slides.length"><slides></slides></div ng-if>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http, $sce) {
+        $scope.slides = [];
     }],
     link: ["$scope", "$location", "$http", function($scope, $location, $http, $sce) {
       var hash_parts = $location.hash().split("/");
