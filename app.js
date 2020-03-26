@@ -90,11 +90,9 @@ app.directive('slideshow', ['$compile', function($compile) {
       collection: '@'
     },
     template: '<div ng-if="slides.length"><slides></slides></div ng-if>',
-    controller: ["$scope", "$location", "$http", function($scope, $location, $http, $sce) {
-        $scope.slides = [];
-        console.log("slideshow controller");
-    }],
-    link: ["$location", function(scope, elem, attr, $location) {
+    controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
+      console.log("slideshow controller");
+      $scope.slides = [];
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
       $scope.deck = deck;
@@ -118,6 +116,8 @@ app.directive('slideshow', ['$compile', function($compile) {
           $scope.slides = [];
           console.error(response);
       });
+    }],
+    link: ["$location", function(scope, elem, attr, $location) {
       //elem.addClass('slides');
     }],
   };
