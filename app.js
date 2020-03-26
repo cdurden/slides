@@ -206,10 +206,10 @@ app.config([ '$httpProvider' , function ($httpProvider) {
 */
 app.directive('slideshow', ['$compile', function($compile) {
   return {
-    scope: {
+    bindToController: {
       slides: '@'
     },
-      template: '<ng-bind-html="slides"></ng-bind>',
+      template: '<div ng-bind-html="slides"></div>',
       controller: ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $http, $routeParams) {
       var hash_parts = $location.hash().split("/");
       var deck = hash_parts[0] ? hash_parts[0] : hash_parts[1];
