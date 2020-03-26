@@ -4,9 +4,9 @@
         single-part section
         {{i}}
         <section ng-if="src[i][0].split('.').pop()=='md'" id="{{section[0]}}" data-markdown data-separator="^---$">
-            <script ng-ninclude="src[i][0]" type="text/template"></script>
+            <script ng-include="src[i][0]" type="text/template"></script>
         </section>
-        <section ng-if="src[i][0].split('.').pop()!='md'" id="{{section[0]}}" ng-ninclude="src[i][0]">
+        <section ng-if="src[i][0].split('.').pop()!='md'" id="{{section[0]}}" ng-include="src[i][0]">
         </section>
     </ng-container>
     <ng-container ng-if="section.length > 1">
@@ -15,8 +15,8 @@
         {{section[0]}}
         <div ng-repeat "slide in section" ng-init="j=$index">
             {{i}} {{j}}
-            <section ng-if="src[i][j].split('.').pop()=='md'" id="{{slide}}" data-markdown data-separator="^---$"><script ng-ninclude="src[i][j]" type="text/template"></script></section>
-            <section ng-if="src[i][j].split('.').pop()!='md'" id="{{slide}}" ng-ninclude="src[i][j]"></section>
+            <section ng-if="src[i][j].split('.').pop()=='md'" id="{{slide}}" data-markdown data-separator="^---$"><script ng-include="src[i][j]" type="text/template"></script></section>
+            <section ng-if="src[i][j].split('.').pop()!='md'" id="{{slide}}" ng-include="src[i][j]"></section>
         </div>
     </ng-container>
 </div>
