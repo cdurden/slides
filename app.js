@@ -106,11 +106,8 @@ app.directive('slideshow', ['$compile', function($compile) {
             console.log($scope.slides);
             if (typeof(response.data.collection) !== 'undefined') {
               $scope.collection = response.data.collection;
-              $scope.slides = response.data.slides;
-            } else {
-              $scope.slides = response.data.slides;
-              //$scope.slides = response.data;
             }
+            $scope.slides = response.data.slides.map(function(section) return section.map(function(slide) return get_slide_src(slide,collection)));
             console.log($scope.slides);
             //$compile(element)($scope);
         }, function error(response) {
