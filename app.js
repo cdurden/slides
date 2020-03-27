@@ -241,7 +241,7 @@ app.directive('slideshow', ['$compile', function($compile) {
   };
 }]);
 
-app.controller("MyController", ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $http, $routeParams) {
+app.controller("myctrl", ["$scope", "$location", "$http", "$routeParams", function($scope, $location, $http, $routeParams) {
   //$scope.deck = $location.hash();
   /*console.log($routeParams.deck);
     /*
