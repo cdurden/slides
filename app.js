@@ -90,8 +90,8 @@ app.directive('slideshow', ['$compile', function($compile) {
 //      srca: '@',
       collection: '@'
     },
-    replace: false,
-    template: '<section ng-repeat="section in sections"><slides-section section="section"></slides-section></section>',
+    replace: true,
+    template: '<div><slides-section ng-repeat-start="section in sections"></slides-section></div>',
     controller: ["$scope", "$location", "$http", function($scope, $location, $http) {
       console.log("slideshow controller");
       var hash_parts = $location.hash().split("/");
