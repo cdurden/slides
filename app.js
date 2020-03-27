@@ -135,7 +135,8 @@ app.directive("slidesSection", function() {
   return {
     restrict: 'E',
     //templateUrl: './templates/section.html',
-    template: '<section ng-repeat="slide in section"><html-slide slide="slide"></html-slide></ng-init></section>',
+    template: '<section ng-repeat="slide in section"><html-slide slide="slide"></html-slide></section>',
+    //template: '<section ng-repeat="slide in section"><html-slide slide="slide"></html-slide></ng-init></section>',
     replace: true,
     require: '^slideshow',
     scope: {
